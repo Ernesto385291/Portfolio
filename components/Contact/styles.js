@@ -28,13 +28,13 @@ export const Title = styled.h2`
   text-align: left;
   margin-bottom: 0.8rem;
 `
-export const Aside_1 = styled.aside`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-`
-export const Button = styled.button`
+
+export const Button = styled.a`
   height: 45px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: inherit;
   margin: 0;
   width: 100%;
   background-color: #000;
@@ -44,7 +44,6 @@ export const Button = styled.button`
   transition: 250ms;
   cursor: pointer;
   border-radius: 7px;
-  font-size: inherit;
   line-height: inherit;
   outline: none;
   text-decoration: none;

@@ -34,7 +34,9 @@ export const Hero = () => {
         I'm in love with <strong>Javascript</strong> and <strong>Python</strong>
         , <br /> I never stop learning.
       </Description>
-      <Button>CONNECT WITH ME</Button>
+      <Button target="_blank" href="mailto:me@ernestovizcaino.com">
+        CONNECT WITH ME
+      </Button>
     </Container>
   )
 }

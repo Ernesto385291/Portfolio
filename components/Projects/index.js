@@ -14,7 +14,6 @@ import {
 } from "./styles"
 
 export const Projects = ({ data }) => {
-  console.log(data)
   return (
     <Container>
       <Headings>

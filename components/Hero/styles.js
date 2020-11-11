@@ -37,7 +37,7 @@ export const Description = styled.h3`
   font-weight: normal;
   text-align: center;
 `
-export const Button = styled.button`
+export const Button = styled.a`
   padding: 15px 20px;
   background-color: black;
   color: white;
@@ -51,4 +51,5 @@ export const Button = styled.button`
   align-items: center;
   outline: none;
   cursor: pointer;
+  text-decoration: none;
 `

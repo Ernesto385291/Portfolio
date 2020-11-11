@@ -24,6 +24,21 @@ export default function Home({ projects }) {
       <Head>
         <title>Ernesto Vizcaíno</title>
         <link rel="icon" href="/favicon.ico" />
+        <meta name="theme-color" content="#52d198" />
+        <meta property="og:title" content="Ernesto Vizcaíno" />
+        <meta property="og:site_name" content="Ernesto Vizcaíno" />
+        <meta property="og:url" content="https://ernestovizcaino.com/" />
+        <meta
+          property="og:description"
+          content="A coder, I specialize in Frontend Development and Mobile Development
+          using React, I'm in love with Javascript and Python,
+          I never stop learning."
+        />
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:image"
+          content="https://i.imgur.com/Hi2WGWX.png"
+        ></meta>
       </Head>
       <Navbar />
       <Hero />

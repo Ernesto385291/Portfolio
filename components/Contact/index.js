@@ -16,10 +16,8 @@ export const Contact = () => {
             flexDirection: "column",
           }}
         >
-          <Button>
-            <a target="_blank" href="mailto:me@ernestovizcaino.com">
-              Email me!
-            </a>
+          <Button target="_blank" href="mailto:me@ernestovizcaino.com">
+            Email me!
           </Button>
         </aside>
       </Content>
