@@ -23,6 +23,16 @@ export default function Home({ projects }) {
     <div>
       <Head>
         <title>Ernesto Vizcaíno</title>
+        <meta
+          name="description"
+          content="A coder, I specialize in Frontend Development and Mobile Development
+          using React, I'm in love with Javascript and Python,
+          I never stop learning."
+        />
+        <meta
+          name="keywords"
+          content="Ernesto Vizcaíno, Ernesto Vizcaino Alvarado, Ernesto Vizcaíno Alvarado, Ernesto Vizcaino, Ernesto, Vizcaíno, Vizcaino, Frontend"
+        />
         <link rel="icon" href="/favicon.ico" />
         <meta name="theme-color" content="#52d198" />
         <meta property="og:title" content="Ernesto Vizcaíno" />

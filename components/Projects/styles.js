@@ -59,13 +59,6 @@ export const ProjectContainer = styled.div`
     box-shadow: 0px 0px 12px 0px rgba(232, 232, 232, 1);
   }
 `
-export const ProjectTitleContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-`
 
 export const ProjectCircle = styled.div`
   width: 15px;
