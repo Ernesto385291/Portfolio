@@ -19,7 +19,7 @@ export const Name = styled.h1`
     margin-bottom: 0px;
   }
 `
-export const CTA = styled.h1`
+export const CTA = styled.h2`
   margin: 0;
   font-size: 80px;
   font-weight: bold;
