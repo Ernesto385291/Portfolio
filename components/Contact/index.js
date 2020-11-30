@@ -4,7 +4,7 @@ import { Container, Content, Title, Button } from "./styles"
 
 export const Contact = () => {
   return (
-    <Container>
+    <Container id="contact">
       <Content>
         <aside>
           <Title>Let's get in touch</Title>

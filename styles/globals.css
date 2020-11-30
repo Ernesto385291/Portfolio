@@ -11,6 +11,10 @@
   background: #6bf5f0;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 html,
 body {
   padding: 0;
@@ -25,4 +29,11 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    color: #fff;
+    background-color: #1e2838;
+  }
 }

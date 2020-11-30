@@ -52,4 +52,8 @@ export const Button = styled.a`
   outline: none;
   cursor: pointer;
   text-decoration: none;
+  @media (prefers-color-scheme: dark) {
+    color: #000;
+    background-color: #fff;
+  }
 `

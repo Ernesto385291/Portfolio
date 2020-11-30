@@ -15,7 +15,7 @@ import {
 
 export const Projects = ({ data }) => {
   return (
-    <Container>
+    <Container id="projects">
       <Headings>
         <Title>Projects</Title>
         <Subtitle>

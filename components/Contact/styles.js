@@ -53,6 +53,16 @@ export const Button = styled.a`
     border: 1px solid #000;
     color: #000;
   }
+  @media (prefers-color-scheme: dark) {
+    color: #000;
+    background-color: #fff;
+    :hover {
+      transition: 250ms;
+      background-color: #000;
+      border: 1px solid #fff;
+      color: #fff;
+    }
+  }
   @media (max-width: 640px) {
     width: 100%;
   }

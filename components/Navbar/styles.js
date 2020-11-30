@@ -6,7 +6,9 @@ export const Container = styled.nav`
   align-items: center;
   padding: 0px 80px;
   height: 70px;
-
+  @media (prefers-color-scheme: dark) {
+    background-color: #111827;
+  }
   @media (max-width: 768px) {
     padding: 0px 50px;
   }
@@ -20,7 +22,7 @@ export const Content = styled.div`
     display: none;
   }
 `
-export const Item = styled.p`
+export const Item = styled.a`
   margin-left: 30px;
 `
 export const Mail = styled.a`
@@ -32,4 +34,7 @@ export const Mail = styled.a`
   margin-inline-end: 0px;
   text-decoration: none;
   color: black;
+  @media (prefers-color-scheme: dark) {
+    color: #fff;
+  }
 `

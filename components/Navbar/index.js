@@ -11,8 +11,8 @@ export const Navbar = () => {
 
       <Content>
         <Item>Blog</Item>
-        <Item>Projects</Item>
-        <Item>Contact</Item>
+        <Item href="#projects">Projects</Item>
+        <Item href="#contact">Contact</Item>
       </Content>
     </Container>
   )

@@ -72,10 +72,16 @@ export const ProjectTitle = styled.h3`
   line-height: 1.4;
   margin: 16px 0px;
   color: #111;
+  @media (prefers-color-scheme: dark) {
+    color: #fff;
+  }
 `
 export const ProjectDetails = styled.div`
   font-size: 14px;
   color: #111;
+  @media (prefers-color-scheme: dark) {
+    color: #fff;
+  }
 `
 export const ProjectLink = styled.a`
   text-decoration: none;

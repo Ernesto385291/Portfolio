@@ -24,7 +24,7 @@ export const Hero = () => {
         }}
       >
         <CTA>
-          Creating the future <br /> of the web
+          Coding <br /> the future
         </CTA>
       </motion.div>
       <Description>
