@@ -36,6 +36,15 @@ export const Footer = () => {
               style={{ marginRight: 15 }}
             />
           </a>
+          <a href="http://linkedin.com/in/erne-vizcaino/" target="_blank">
+            <Image
+              src="/linkedin-Logo.png"
+              alt="Ernesto Vizcaíno Linkedin"
+              width={35}
+              height={35}
+              style={{ marginRight: 15 }}
+            />
+          </a>
         </aside>
         <aside>
           <p style={{ color: "#8c8c8c", fontsize: "0.7901234567901234em" }}>
