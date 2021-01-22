@@ -1,22 +1,22 @@
-import Head from "next/head"
+import Head from "next/head";
 
-import { Navbar } from "../components/Navbar"
-import { Hero } from "../components/Hero"
-import { Projects } from "../components/Projects"
-import { Contact } from "../components/Contact"
-import { Footer } from "../components/Footer"
+import { Navbar } from "../components/Navbar";
+import { Hero } from "../components/Hero";
+import { Projects } from "../components/Projects";
+import { Contact } from "../components/Contact";
+import { Footer } from "../components/Footer";
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async () => {
   // Call an external API endpoint to get posts.
-  const res = await fetch("https://my-blog-strapi-js.herokuapp.com/projects")
-  const projects = await res.json()
+  const res = await fetch("https://my-blog-strapi-js.herokuapp.com/projects");
+  const projects = await res.json();
 
   return {
     props: {
       projects,
     },
-  }
-}
+  };
+};
 
 export default function Home({ projects }) {
   return (
@@ -56,5 +56,5 @@ export default function Home({ projects }) {
       <Contact />
       <Footer />
     </div>
-  )
+  );
 }
