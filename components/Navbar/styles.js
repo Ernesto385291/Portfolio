@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled from "styled-components";
 
 export const Container = styled.nav`
   display: flex;
@@ -15,16 +15,19 @@ export const Container = styled.nav`
   @media (max-width: 425px) {
     padding: 0px 25px;
   }
-`
+`;
 export const Content = styled.div`
   display: flex;
+`;
+export const HidingContent = styled.div`
   @media (max-width: 700px) {
     display: none;
   }
-`
+`;
 export const Item = styled.a`
   margin-left: 30px;
-`
+  cursor: pointer;
+`;
 export const Mail = styled.a`
   font-size: 16;
   display: block;
@@ -37,4 +40,4 @@ export const Mail = styled.a`
   @media (prefers-color-scheme: dark) {
     color: #fff;
   }
-`
+`;

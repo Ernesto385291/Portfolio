@@ -1,6 +1,6 @@
 import React from "react";
-
-import { Container, Content, Item, Mail } from "./styles";
+import Link from "next/link";
+import { Container, Content, Item, Mail, HidingContent } from "./styles";
 
 export const Navbar = () => {
   return (
@@ -10,9 +10,13 @@ export const Navbar = () => {
       </Mail>
 
       <Content>
-        {/* <Item>Blog</Item> */}
-        <Item href="#projects">Projects</Item>
-        <Item href="#contact">Contact</Item>
+        <Link href="/articles">
+          <Item>Blog</Item>
+        </Link>
+        <HidingContent>
+          <Item href="#projects">Projects</Item>
+          <Item href="#contact">Contact</Item>
+        </HidingContent>
       </Content>
     </Container>
   );

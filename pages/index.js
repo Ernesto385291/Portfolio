@@ -23,6 +23,7 @@ export default function Home({ projects }) {
     <div>
       <Head>
         <title>Ernesto Vizcaíno</title>
+        <html lang="en" />
         <meta
           name="description"
           content="A coder, I specialize in Frontend Development and Mobile Development

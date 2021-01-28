@@ -1,7 +1,7 @@
-import React from "react"
-import Image from "next/image"
+import React from "react";
+import Image from "next/image";
 
-import { Container, Content } from "./styles"
+import { Container, Content } from "./styles";
 
 export const Footer = () => {
   return (
@@ -48,10 +48,10 @@ export const Footer = () => {
         </aside>
         <aside>
           <p style={{ color: "#8c8c8c", fontsize: "0.7901234567901234em" }}>
-            Copyright © 2020 Ernesto Vizcaíno. All rights reserved.
+            Copyright © 2021 Ernesto Vizcaíno. All rights reserved.
           </p>
         </aside>
       </Content>
     </Container>
-  )
-}
+  );
+};
