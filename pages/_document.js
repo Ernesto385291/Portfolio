@@ -1,5 +1,5 @@
-import Document, { Head } from "next/document";
-import { Fragment } from "react";
+import Document from "next/document";
+import Head from "next/head";
 import { ServerStyleSheet } from "styled-components";
 
 export default class MyDocument extends Document {
@@ -12,25 +12,26 @@ export default class MyDocument extends Document {
         originalRenderPage({
           enhanceApp: (App) => (props) =>
             sheet.collectStyles(
-              <Fragment>
+              <>
                 <Head>
                   <script
                     async
-                    src="https://www.googletagmanager.com/gtag/js?id=G-K6LDVC7P76"
+                    src="https://www.googletagmanager.com/gtag/js?id=${YOUR_TRACKING_ID}"
                   ></script>
-                  <script>
-                    dangerouslySetInnerHTML=
-                    {{
+                  <script
+                    async
+                    dangerouslySetInnerHTML={{
                       __html: `window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-            
-              gtag('config', G-K6LDVC7P76);`,
+                      function gtag(){dataLayer.push(arguments);}
+                      gtag('js', new Date());
+                    
+                      gtag('config',  G-K6LDVC7P76);`,
                     }}
-                  </script>
+                  />
                 </Head>
+
                 <App {...props} />
-              </Fragment>
+              </>
             ),
         });
 
