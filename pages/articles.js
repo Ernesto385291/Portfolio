@@ -12,6 +12,7 @@ import {
   HeadingSearchContainer,
   HeadingSearch,
   ArticlesContainer,
+  GoBackContainer,
   GoBack,
 } from "../styles/styles";
 
@@ -62,14 +63,15 @@ export default function Articles({ articles }) {
           content="https://i.imgur.com/Hi2WGWX.png"
         ></meta>
       </Head>
+      <GoBackContainer>
+        <Link href="/articles">
+          <GoBack>
+            <BiArrowBack size={20} /> Volver
+          </GoBack>
+        </Link>
+      </GoBackContainer>
       <HeadingContainer>
         <HeadingTitleContainer>
-          <Link href="/">
-            <GoBack>
-              <BiArrowBack size={20} /> Volver
-            </GoBack>
-          </Link>
-
           <HeadingTitle>Blog</HeadingTitle>
         </HeadingTitleContainer>
         {/* <HeadingSearchContainer>
