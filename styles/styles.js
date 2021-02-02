@@ -7,6 +7,7 @@ export const HeadingContainer = styled.header`
   border-bottom: 1px solid #eaeaea;
   flex-direction: column;
   margin-bottom: 30px;
+  min-height: 100vh;
 `;
 export const HeadingTitleContainer = styled.div`
   padding: 10px 196px 20px 196px;
