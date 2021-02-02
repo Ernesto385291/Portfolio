@@ -77,7 +77,7 @@ export default function article({ query }) {
                 <div>
                   <Name>Ernesto Vizcaino</Name>
                   <Social
-                    href="https://twitter.com/@erne_vizcaino"
+                    href="https://twitter.com/Erne_Vizcaino"
                     target="_blank"
                   >
                     @erne_vizcaino
