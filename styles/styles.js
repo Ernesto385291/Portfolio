@@ -1,13 +1,14 @@
 import styled from "styled-components";
 
-export const Container = styled.div``;
+export const Container = styled.div`
+  min-height: 100vh;
+`;
 export const HeadingContainer = styled.header`
   display: flex;
   align-items: flex-start;
   border-bottom: 1px solid #eaeaea;
   flex-direction: column;
   margin-bottom: 30px;
-  min-height: 100vh;
 `;
 export const HeadingTitleContainer = styled.div`
   padding: 10px 196px 20px 196px;
