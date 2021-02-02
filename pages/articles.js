@@ -64,7 +64,7 @@ export default function Articles({ articles }) {
         ></meta>
       </Head>
       <GoBackContainer>
-        <Link href="/articles">
+        <Link href="/">
           <GoBack>
             <BiArrowBack size={20} /> Volver
           </GoBack>
