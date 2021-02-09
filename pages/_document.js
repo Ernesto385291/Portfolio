@@ -16,7 +16,7 @@ export default class MyDocument extends Document {
                 <Head>
                   <script
                     async
-                    src="https://www.googletagmanager.com/gtag/js?id=${YOUR_TRACKING_ID}"
+                    src="https://www.googletagmanager.com/gtag/js?id=G-K6LDVC7P76"
                   ></script>
                   <script
                     async
@@ -25,7 +25,7 @@ export default class MyDocument extends Document {
                       function gtag(){dataLayer.push(arguments);}
                       gtag('js', new Date());
                     
-                      gtag('config',  G-K6LDVC7P76);`,
+                      gtag('config', 'G-K6LDVC7P76');
                     }}
                   />
                 </Head>
