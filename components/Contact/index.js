@@ -1,6 +1,6 @@
-import React from "react"
+import React from "react";
 
-import { Container, Content, Title, Button } from "./styles"
+import { Container, Content, Title, Button } from "./styles";
 
 export const Contact = () => {
   return (
@@ -22,5 +22,5 @@ export const Contact = () => {
         </aside>
       </Content>
     </Container>
-  )
-}
+  );
+};

@@ -6,7 +6,7 @@ import { Projects } from "../components/Projects";
 import { Contact } from "../components/Contact";
 import { Footer } from "../components/Footer";
 
-export const getServerSideProps = async () => {
+export const getStaticProps = async () => {
   // Call an external API endpoint to get posts.
   const res = await fetch("https://my-blog-strapi-js.herokuapp.com/projects");
   const projects = await res.json();
@@ -15,6 +15,7 @@ export const getServerSideProps = async () => {
     props: {
       projects,
     },
+    revalidate: 1, // In seconds
   };
 };
 
