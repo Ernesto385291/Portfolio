@@ -124,7 +124,15 @@ export const ArticleContent = styled.div`
   font-size: 1rem;
   line-height: 2rem;
   font-size: 16px;
-  margin: 0px 50px;
+  margin: 0px 15rem;
+  padding-top: 30px;
+
+  @media (max-width: 1024px) {
+    margin: 0px 8rem;
+  }
+  @media (max-width: 768px) {
+    margin: 0px 3rem;
+  }
   @media (max-width: 500px) {
     margin: 0px 20px;
   }

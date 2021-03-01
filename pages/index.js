@@ -27,13 +27,13 @@ export default function Home({ projects }) {
         <html lang="en" />
         <meta
           name="description"
-          content="A coder, I specialize in Frontend Development and Mobile Development
+          content="My name is Ernesto Vizcaíno (@erne_vizcaino) i'm a coder, I specialize in Frontend Development and Mobile Development
           using React, I'm in love with Javascript and Python,
           I never stop learning."
         />
         <meta
           name="keywords"
-          content="Ernesto Vizcaíno, Ernesto Vizcaino Alvarado, Ernesto Vizcaíno Alvarado, Ernesto Vizcaino, Ernesto, Vizcaíno, Vizcaino, Frontend"
+          content="Ernesto Vizcaíno, Ernesto Vizcaino Alvarado, Ernesto Vizcaíno Alvarado, Ernesto Vizcaino, Ernesto, Vizcaíno, Vizcaino, Frontend, Erne_Vizcaino, @Erne_Vizcaino, erne_vizcaino, @erne_vizcaino"
         />
         <link rel="icon" href="/favicon.ico" />
         <meta name="theme-color" content="#52d198" />
