@@ -4,7 +4,6 @@ import axios from "axios";
 import ReactMarkdown from "react-markdown";
 import Link from "next/link";
 
-import { useRouter } from "next/router";
 import { BiArrowBack } from "react-icons/bi";
 
 import {

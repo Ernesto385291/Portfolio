@@ -125,6 +125,11 @@ export const ArticleContent = styled.div`
   margin: 0px 15rem;
   padding-top: 30px;
 
+  .img {
+    border-radius: 10;
+    width: 100%;
+  }
+
   @media (max-width: 1024px) {
     margin: 0px 8rem;
   }
