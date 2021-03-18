@@ -19,19 +19,9 @@ import {
   ArticleContent,
   GoBack,
   GoBackContainer,
-} from "../styles/styles";
+} from "../../styles/styles";
 
-export default function article({ query }) {
-  const router = useRouter();
-  const [data, setData] = useState();
-
-  useEffect(() => {
-    if (router.query.id) {
-      axios
-        .get(`https://my-blog-strapi-js.herokuapp.com/posts/${router.query.id}`)
-        .then((data) => setData(data.data));
-    }
-  }, [router.query.id]);
+export default function article({ article }) {
   return (
     <div>
       <Head>
@@ -59,7 +49,7 @@ export default function article({ query }) {
         ></meta>
       </Head>
 
-      {data ? (
+      {article ? (
         <Fragment>
           <GoBackContainer>
             <Link href="/articles">
@@ -69,7 +59,7 @@ export default function article({ query }) {
             </Link>
           </GoBackContainer>
           <ArticleHeader>
-            <ArticleTitle>{data.Title}</ArticleTitle>
+            <ArticleTitle>{article.Title}</ArticleTitle>
             <ArticleDate>Martes, 26 de enero del 2021</ArticleDate>
             <ArticleAuthor>
               <Author>
@@ -87,7 +77,7 @@ export default function article({ query }) {
             </ArticleAuthor>
           </ArticleHeader>
           <ArticleContent>
-            <ReactMarkdown>{data.Content}</ReactMarkdown>
+            <ReactMarkdown>{article.Content}</ReactMarkdown>
           </ArticleContent>
         </Fragment>
       ) : (
@@ -95,4 +85,34 @@ export default function article({ query }) {
       )}
     </div>
   );
+}
+
+export async function getStaticPaths() {
+  // Call an external API endpoint to get posts
+  const res = await fetch("https://my-blog-strapi-js.herokuapp.com/posts/");
+  const posts = await res.json();
+
+  // Get the paths we want to pre-render based on posts
+  const paths = posts.map((post) => ({
+    params: { id: post.id.toString() },
+  }));
+
+  // We'll pre-render only these paths at build time.
+  // { fallback: false } means other routes should 404.
+  return { paths, fallback: false };
+}
+
+export async function getStaticProps({ params }) {
+  // Call an external API endpoint to get posts.
+  const res = await fetch(
+    `https://my-blog-strapi-js.herokuapp.com/posts/${params.id}`
+  );
+  const article = await res.json();
+
+  return {
+    props: {
+      article,
+    },
+    revalidate: 1, // In seconds
+  };
 }

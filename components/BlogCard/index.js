@@ -1,24 +1,21 @@
 import React from "react";
 import Link from "next/link";
 
-import { Container, Date, EntryTitle, Description, ReadMore } from "./styles";
+import {
+  Container,
+  Date,
+  EntryTitle,
+  Description as DescriptionContainer,
+  ReadMore,
+} from "./styles";
 
-export const BlogCard = ({ id, Title, Content, Image, Creation }) => {
+export const BlogCard = ({ id, Title, Description, Creation }) => {
   return (
     <Container>
-      <Date>Martes, 26 de enero del 2021</Date>
+      <Date>{Creation}</Date>
       <EntryTitle>{Title}</EntryTitle>
-      <Description>
-        Strapi en pocas palabras es un sistema gestor de contenidos, o CMS por
-        sus siglas en inglés, y es un software que corre dentro de un navegador
-        que te permite administrar el contenido de un sitio web.
-      </Description>
-      <Link
-        href={{
-          pathname: "/article",
-          query: { id: id },
-        }}
-      >
+      <DescriptionContainer>{Description}</DescriptionContainer>
+      <Link href="/article/[id]" as={`/article/${id}`}>
         <ReadMore>LEER MÁS</ReadMore>
       </Link>
     </Container>

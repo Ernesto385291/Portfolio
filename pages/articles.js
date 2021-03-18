@@ -18,8 +18,8 @@ import {
 
 import { BlogCard } from "../components/BlogCard";
 
-export const getServerSideProps = async () => {
-  // Call an external API endpoint to get articles.
+export const getStaticProps = async () => {
+  // Call an external API endpoint to get posts.
   const res = await fetch("https://my-blog-strapi-js.herokuapp.com/posts");
   const articles = await res.json();
 
@@ -27,6 +27,7 @@ export const getServerSideProps = async () => {
     props: {
       articles,
     },
+    revalidate: 1, // In seconds
   };
 };
 
@@ -78,11 +79,11 @@ export default function Articles({ articles }) {
           <HeadingSearch placeholder="Seach posts..." />
         </HeadingSearchContainer> */}
       </HeadingContainer>
-      {articles.map((article) => (
-        <ArticlesContainer>
+      <ArticlesContainer>
+        {articles.map((article) => (
           <BlogCard {...article} />
-        </ArticlesContainer>
-      ))}
+        ))}
+      </ArticlesContainer>
     </Container>
   );
 }
