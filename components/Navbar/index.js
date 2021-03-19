@@ -10,7 +10,7 @@ export const Navbar = () => {
       </Mail>
 
       <Content>
-        <Item href="#blog">Projects</Item>
+        <Item href="#blog">Blog</Item>
         <Item href="#projects">Projects</Item>
         <Item href="#contact">Contact</Item>
       </Content>
