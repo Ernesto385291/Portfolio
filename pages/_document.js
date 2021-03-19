@@ -1,5 +1,4 @@
 import Document from "next/document";
-import Head from "next/head";
 import { ServerStyleSheet } from "styled-components";
 
 export default class MyDocument extends Document {
@@ -11,28 +10,7 @@ export default class MyDocument extends Document {
       ctx.renderPage = () =>
         originalRenderPage({
           enhanceApp: (App) => (props) =>
-            sheet.collectStyles(
-              <>
-                <Head>
-                  <script
-                    async
-                    src="https://www.googletagmanager.com/gtag/js?id=G-K6LDVC7P76"
-                  ></script>
-                  <script
-                    async
-                    dangerouslySetInnerHTML={{
-                      __html: `window.dataLayer = window.dataLayer || [];
-                      function gtag(){dataLayer.push(arguments);}
-                      gtag('js', new Date());
-                    
-                      gtag('config', 'G-K6LDVC7P76');`,
-                    }}
-                  />
-                </Head>
-
-                <App {...props} />
-              </>
-            ),
+            sheet.collectStyles(<App {...props} />),
         });
 
       const initialProps = await Document.getInitialProps(ctx);
