@@ -1,9 +1,13 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  width: 100%;
+  width: 400px;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  padding: 1rem;
+  flex-shrink: 0;
+  margin-right: 20px;
 `;
 export const Cover = styled.img`
   width: 100%;

@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled from "styled-components";
 
 export const Container = styled.section`
   width: 100%;
@@ -6,25 +6,25 @@ export const Container = styled.section`
   padding: 6.25rem 1rem;
   max-width: 1024px;
   text-align: center;
-`
+`;
 export const Headings = styled.div`
   position: relative;
   text-align: center;
   margin: 1rem 0 3rem 0;
-`
+`;
 
 export const Title = styled.h2`
   font-size: 2rem;
   letter-spacing: -1px;
   margin-bottom: 1rem;
   line-height: 1.3;
-`
+`;
 export const Subtitle = styled.h3`
   color: #696969;
   font-weight: 400;
   font-size: 1rem;
   margin: 0px;
-`
+`;
 
 export const Content = styled.div`
   display: grid;
@@ -39,7 +39,7 @@ export const Content = styled.div`
     display: grid;
     grid-template-columns: repeat(1, minmax(0, 1fr));
   }
-`
+`;
 
 // Project Styles
 
@@ -58,14 +58,14 @@ export const ProjectContainer = styled.div`
     transition: 250ms;
     box-shadow: 0px 0px 12px 0px rgba(232, 232, 232, 1);
   }
-`
+`;
 
 export const ProjectCircle = styled.div`
   width: 15px;
   height: 15px;
   background-color: ${(props) => props.color};
   border-radius: 100%;
-`
+`;
 export const ProjectTitle = styled.h3`
   font-weight: 600;
   font-size: 1.125em;
@@ -75,14 +75,14 @@ export const ProjectTitle = styled.h3`
   @media (prefers-color-scheme: dark) {
     color: #fff;
   }
-`
+`;
 export const ProjectDetails = styled.div`
   font-size: 14px;
   color: #111;
   @media (prefers-color-scheme: dark) {
     color: #fff;
   }
-`
+`;
 export const ProjectLink = styled.a`
   text-decoration: none;
   color: #067df7;
@@ -94,4 +94,4 @@ export const ProjectLink = styled.a`
     text-decoration: underline;
     transition: 250ms;
   }
-`
+`;

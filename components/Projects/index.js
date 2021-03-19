@@ -1,5 +1,5 @@
-import React from "react"
-import ReadMoreAndLess from "react-read-more-less"
+import React from "react";
+import ReadMoreAndLess from "react-read-more-less";
 
 import {
   Container,
@@ -11,7 +11,7 @@ import {
   ProjectTitle,
   ProjectDetails,
   ProjectLink,
-} from "./styles"
+} from "./styles";
 
 export const Projects = ({ data }) => {
   return (
@@ -26,16 +26,17 @@ export const Projects = ({ data }) => {
         {data.map((project) => {
           return (
             <Project
+              key={project.id}
               name={project.Project_Title}
               details={project.Description}
               link={project.Project_URL}
             />
-          )
+          );
         })}
       </Content>
     </Container>
-  )
-}
+  );
+};
 
 const Project = ({ name, details, link, technologies }) => {
   return (
@@ -55,5 +56,5 @@ const Project = ({ name, details, link, technologies }) => {
         Project →
       </ProjectLink>
     </ProjectContainer>
-  )
-}
+  );
+};

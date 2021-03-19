@@ -10,13 +10,9 @@ export const Navbar = () => {
       </Mail>
 
       <Content>
-        <Link href="/articles">
-          <Item>Blog</Item>
-        </Link>
-        <HidingContent>
-          <Item href="#projects">Projects</Item>
-          <Item href="#contact">Contact</Item>
-        </HidingContent>
+        <Item href="#blog">Projects</Item>
+        <Item href="#projects">Projects</Item>
+        <Item href="#contact">Contact</Item>
       </Content>
     </Container>
   );

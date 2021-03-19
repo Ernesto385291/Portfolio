@@ -2,24 +2,25 @@ import Head from "next/head";
 
 import { Navbar } from "../components/Navbar";
 import { Hero } from "../components/Hero";
+import { Posts } from "../components/Posts";
 import { Projects } from "../components/Projects";
 import { Contact } from "../components/Contact";
 import { Footer } from "../components/Footer";
 
 export const getStaticProps = async () => {
   // Call an external API endpoint to get posts.
-  const res = await fetch("https://my-blog-strapi-js.herokuapp.com/projects");
-  const projects = await res.json();
+  const res = await fetch("https://my-blog-strapi-js.herokuapp.com/apps");
+  const data = await res.json();
 
   return {
     props: {
-      projects,
+      data,
     },
     revalidate: 1, // In seconds
   };
 };
 
-export default function Home({ projects }) {
+export default function Home({ data }) {
   return (
     <div>
       <Head>
@@ -54,7 +55,8 @@ export default function Home({ projects }) {
       </Head>
       <Navbar />
       <Hero />
-      <Projects data={projects} />
+      <Posts data={data[0].posts} />
+      <Projects data={data[0].projects} />
       <Contact />
       <Footer />
     </div>

@@ -18,8 +18,6 @@ export const Container = styled.nav`
 `;
 export const Content = styled.div`
   display: flex;
-`;
-export const HidingContent = styled.div`
   @media (max-width: 700px) {
     display: none;
   }
