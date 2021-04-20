@@ -22,7 +22,7 @@ export const getStaticProps = async () => {
 
 export default function Home({ data }) {
   return (
-    <div>
+    <>
       <Head>
         <title>Ernesto Vizcaíno</title>
         <html lang="en" />
@@ -59,6 +59,6 @@ export default function Home({ data }) {
       <Projects data={data[0].projects} />
       <Contact />
       <Footer />
-    </div>
+    </>
   );
 }

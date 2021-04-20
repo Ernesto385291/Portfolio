@@ -22,30 +22,24 @@ import {
 
 export default function article({ article }) {
   return (
-    <div>
+    <>
       <Head>
-        <title>Ernesto Vizcaíno</title>
+        <title>{`${article.Title} | Ernesto Vizcaíno`}</title>
+        <html lang="es" />
+        <meta name="description" content={article.Description} />
         <meta
-          name="keywords"
-          content="Ernesto Vizcaíno, Ernesto Vizcaino Alvarado, Ernesto Vizcaíno Alvarado, Ernesto Vizcaino, Ernesto, Vizcaíno, Vizcaino, Frontend"
+          property="og:title"
+          content={`${article.Title} | Ernesto Vizcaíno`}
         />
-
-        <link rel="icon" href="/favicon.ico" />
-        <meta name="theme-color" content="#52d198" />
-        <meta property="og:title" content="Ernesto Vizcaíno" />
-        <meta property="og:site_name" content="Ernesto Vizcaíno" />
-        <meta property="og:url" content="https://ernestovizcaino.com/" />
         <meta
-          property="og:description"
-          content="A coder, I specialize in Frontend Development and Mobile Development
-          using React, I'm in love with Javascript and Python,
-          I never stop learning."
+          property="og:site_name"
+          content={`${article.Title} | Ernesto Vizcaíno`}
         />
-        <meta property="og:type" content="website" />
         <meta
-          property="og:image"
-          content="https://i.imgur.com/Hi2WGWX.png"
-        ></meta>
+          property="og:url"
+          content={`https://ernestovizcaino.com/article/${article.id}`}
+        />
+        <meta property="og:description" content={article.Description} />
       </Head>
 
       {article ? (
@@ -82,7 +76,7 @@ export default function article({ article }) {
       ) : (
         <p>Cargando</p>
       )}
-    </div>
+    </>
   );
 }
 

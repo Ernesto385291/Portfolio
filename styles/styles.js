@@ -126,7 +126,7 @@ export const ArticleContent = styled.div`
   padding-top: 30px;
 
   img {
-    border-radius: 10;
+    border-radius: 10px;
     width: 100%;
   }
 

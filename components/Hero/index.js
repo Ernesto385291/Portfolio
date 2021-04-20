@@ -1,17 +1,10 @@
-import React from "react"
-import { motion } from "framer-motion"
-import { Container, Name, CTA, Description, Button } from "./styles"
+import React from "react";
+import { motion } from "framer-motion";
+import { Container, Name, CTA, Description, Button } from "./styles";
 
 export const Hero = () => {
   return (
     <Container>
-      <img
-        src="/me.jpg"
-        alt="Picture of the author"
-        width={100}
-        height={100}
-        style={{ borderRadius: "50%" }}
-      />
       <Name>Hi, I'm Ernesto 🤘</Name>
       <motion.div
         initial={{ scale: 0 }}
@@ -38,5 +31,5 @@ export const Hero = () => {
         CONNECT WITH ME
       </Button>
     </Container>
-  )
-}
+  );
+};

@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled from "styled-components";
 
 export const Container = styled.main`
   display: flex;
@@ -10,7 +10,7 @@ export const Container = styled.main`
   @media (max-width: 425px) {
     margin: 0px 15px;
   }
-`
+`;
 export const Name = styled.h1`
   font-size: 20px;
   font-weight: 500;
@@ -18,25 +18,30 @@ export const Name = styled.h1`
   @media (max-width: 425px) {
     margin-bottom: 0px;
   }
-`
+`;
 export const CTA = styled.h2`
   margin: 0;
-  font-size: 80px;
+  font-size: 8rem;
   font-weight: bold;
   text-align: center;
+  background: url("https://media0.giphy.com/media/2tNvsKkc0qFdNhJmKk/giphy.gif");
+  -webkit-background-clip: text;
+  background-position: center;
+  background-size: cover;
+  color: transparent;
   @media (max-width: 700px) {
-    font-size: 60px;
+    font-size: 4rem;
   }
   @media (max-width: 425px) {
-    font-size: 50px;
+    font-size: 3.5rem;
   }
-`
+`;
 export const Description = styled.h3`
   margin: 20px 0px;
   font-size: 16px;
   font-weight: normal;
   text-align: center;
-`
+`;
 export const Button = styled.a`
   padding: 15px 20px;
   background-color: black;
@@ -56,4 +61,4 @@ export const Button = styled.a`
     color: #000;
     background-color: #fff;
   }
-`
+`;
