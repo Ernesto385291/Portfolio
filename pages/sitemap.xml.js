@@ -8,7 +8,7 @@ const createSitemap = (posts) => `<?xml version="1.0" encoding="UTF-8"?>
           .map(({ id }) => {
             return `
                     <url>
-                        <loc>${`${EXTERNAL_DATA_URL}/${id}`}</loc>
+                        <loc>${`https://ernestovizcaino.com/article/${id}`}</loc>
                     </url>
                 `;
           })
