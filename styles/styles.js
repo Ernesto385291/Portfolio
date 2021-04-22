@@ -146,3 +146,13 @@ export const GoBackContainer = styled.div`
     margin: 30px 20px;
   }
 `;
+
+export const Comments = styled.div`
+  font-family: "Roboto", sans-serif;
+  input textarea {
+    font-family: "Roboto", sans-serif;
+    @media (prefers-color-scheme: dark) {
+      background-color: #1e2838;
+    }
+  }
+`;

@@ -1,6 +1,5 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { Fragment } from "react";
 import Head from "next/head";
-import axios from "axios";
 import ReactMarkdown from "react-markdown";
 import Link from "next/link";
 
@@ -18,6 +17,7 @@ import {
   ArticleContent,
   GoBack,
   GoBackContainer,
+  Comments,
 } from "../../styles/styles";
 
 export default function article({ article }) {
@@ -40,6 +40,7 @@ export default function article({ article }) {
           content={`https://ernestovizcaino.com/article/${article.id}`}
         />
         <meta property="og:description" content={article.Description} />
+        <script async src="https://cusdis.com/js/cusdis.es.js"></script>
       </Head>
 
       {article ? (
@@ -71,6 +72,14 @@ export default function article({ article }) {
           </ArticleHeader>
           <ArticleContent>
             <ReactMarkdown>{article.Content}</ReactMarkdown>
+            <Comments
+              id="cusdis_thread"
+              data-host="https://cusdis.com"
+              data-app-id="63eb4975-4d0f-42fc-a4eb-fc5d564e020c"
+              data-page-id={article.id}
+              data-page-url={`https://ernestovizcaino.com/article/${article.id}`}
+              data-page-title={article.Title}
+            ></Comments>
           </ArticleContent>
         </Fragment>
       ) : (
