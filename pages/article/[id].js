@@ -40,7 +40,6 @@ export default function article({ article }) {
           content={`https://ernestovizcaino.com/article/${article.id}`}
         />
         <meta property="og:description" content={article.Description} />
-        <script async src="https://cusdis.com/js/cusdis.es.js"></script>
       </Head>
 
       {article ? (
@@ -72,14 +71,6 @@ export default function article({ article }) {
           </ArticleHeader>
           <ArticleContent>
             <ReactMarkdown>{article.Content}</ReactMarkdown>
-            <Comments
-              id="cusdis_thread"
-              data-host="https://cusdis.com"
-              data-app-id="63eb4975-4d0f-42fc-a4eb-fc5d564e020c"
-              data-page-id={article.id}
-              data-page-url={`https://ernestovizcaino.com/article/${article.id}`}
-              data-page-title={article.Title}
-            ></Comments>
           </ArticleContent>
         </Fragment>
       ) : (
