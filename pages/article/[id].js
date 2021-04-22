@@ -83,7 +83,7 @@ export default function article({ article }) {
           </ArticleContent>
         </Fragment>
       ) : (
-        <p>Cargando</p>
+        <p>Cargando...</p>
       )}
     </>
   );
