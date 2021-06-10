@@ -1,6 +1,5 @@
 import Head from "next/head";
 
-import { Navbar } from "../components/Navbar";
 import { Hero } from "../components/Hero";
 import { Posts } from "../components/Posts";
 import { Projects } from "../components/Projects";
@@ -53,7 +52,6 @@ export default function Home({ data }) {
           content="https://i.imgur.com/Hi2WGWX.png"
         ></meta>
       </Head>
-      <Navbar />
       <Hero />
       <Posts data={data[0].posts} />
       <Projects data={data[0].projects} />

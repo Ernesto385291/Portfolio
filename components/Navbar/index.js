@@ -1,19 +1,27 @@
 import React from "react";
-import Link from "next/link";
-import { Container, Content, Item, Mail, HidingContent } from "./styles";
 
 export const Navbar = () => {
   return (
-    <Container>
-      <Mail target="_blank" href="mailto:vizcaino.erne@gmail.com">
+    <nav className="flex justify-between items-center p-5 sm:px-10">
+      <a
+        className="text-base no-underline dark:text-white"
+        target="_blank"
+        href="mailto:vizcaino.erne@gmail.com"
+      >
         Email me!
-      </Mail>
+      </a>
 
-      <Content>
-        <Item href="#blog">Blog</Item>
-        <Item href="#projects">Projects</Item>
-        <Item href="#contact">Contact</Item>
-      </Content>
-    </Container>
+      <div className="flex">
+        <a className="dark:text-white" href="#blog">
+          Blog
+        </a>
+        <a className="mx-5 hidden dark:text-white md:block" href="#projects">
+          Projects
+        </a>
+        <a className="hidden dark:text-white md:block" href="#contact">
+          Contact
+        </a>
+      </div>
+    </nav>
   );
 };
