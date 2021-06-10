@@ -35,7 +35,7 @@ export const Hero = () => {
           , <br /> I never stop learning.
         </h1>
         <a
-          className="text-xs px-10 py-4 rounded-full text-center dark:bg-white dark:text-black"
+          className="text-xs px-10 py-4 rounded-full bg-black text-white text-center dark:bg-white dark:text-black"
           target="_blank"
           href="mailto:vizcaino.erne@gmail.com"
         >
