@@ -1,6 +1,5 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Container, Name, CTA, Description, Button } from "./styles";
 import { Navbar } from "../Navbar";
 
 export const Hero = () => {

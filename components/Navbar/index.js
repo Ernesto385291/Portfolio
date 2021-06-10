@@ -2,7 +2,7 @@ import React from "react";
 
 export const Navbar = () => {
   return (
-    <nav className="flex justify-between items-center p-5 sm:px-10">
+    <nav className="flex justify-between mt-5 items-center p-5 sm:px-10">
       <a
         className="text-base no-underline dark:text-white"
         target="_blank"

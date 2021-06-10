@@ -1,26 +1,23 @@
 import React from "react";
 
-import { Container, Content, Title, Button } from "./styles";
-
 export const Contact = () => {
   return (
-    <Container id="contact">
-      <Content>
-        <aside>
-          <Title>Let's get in touch</Title>
-        </aside>
-        <aside
-          style={{
-            display: "flex",
-            alignItems: "flex-end",
-            flexDirection: "column",
-          }}
+    <section
+      className="flex flex-col my-16 mx-5 text-center md:my-56 md:mx-40 md:flex-row md:justify-between md:items-center"
+      id="contact"
+    >
+      <aside className="mb-2 md:mb-0">
+        <h3 className="text-4xl text-left">Let's get in touch</h3>
+      </aside>
+      <aside className="md:w-3/12">
+        <a
+          className="flex flex-row justify-center items-center h-14 text-lg rounded-md bg-black w-full text-white dark:bg-white dark:text-black"
+          target="_blank"
+          href="mailto:vizcaino.erne@gmail.com"
         >
-          <Button target="_blank" href="mailto:vizcaino.erne@gmail.com">
-            Email me!
-          </Button>
-        </aside>
-      </Content>
-    </Container>
+          Email me!
+        </a>
+      </aside>
+    </section>
   );
 };
