@@ -129,6 +129,11 @@ export const ArticleContent = styled.div`
     border-radius: 10px;
     width: 100%;
   }
+  h2 {
+    font-size: 1.8rem;
+    font-weight: 500;
+    margin: 15px 0px;
+  }
 
   @media (max-width: 1024px) {
     margin: 0px 8rem;
