@@ -24,22 +24,31 @@ export default function article({ article }) {
   return (
     <>
       <Head>
-        <title>{`${article.Title} | Ernesto Vizcaíno`}</title>
-        <html lang="es" />
+        <title>{`Ernesto Vizcaíno | ${article.Title}`}</title>
         <meta name="description" content={article.Description} />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        {/* <!-- Essential Twitter Meta Tags --> */}
+
+        <meta name="twitter:card" content="summary" />
+        <meta
+          name="twitter:title"
+          content={`Ernesto Vizcaíno | ${article.Title}`}
+        />
+        <meta name="twitter:description" content={article.Description} />
+
+        {/* <!-- Essential Facebook Meta Tags --> */}
+
         <meta
           property="og:title"
-          content={`${article.Title} | Ernesto Vizcaíno`}
+          content={`Ernesto Vizcaíno | ${article.Title}`}
         />
-        <meta
-          property="og:site_name"
-          content={`${article.Title} | Ernesto Vizcaíno`}
-        />
+        <meta property="og:description" content={article.Description} />
+
         <meta
           property="og:url"
           content={`https://ernestovizcaino.com/article/${article.id}`}
         />
-        <meta property="og:description" content={article.Description} />
       </Head>
 
       {article ? (
@@ -53,7 +62,7 @@ export default function article({ article }) {
           </GoBackContainer>
           <ArticleHeader>
             <ArticleTitle>{article.Title}</ArticleTitle>
-            <ArticleDate>Martes, 26 de enero del 2021</ArticleDate>
+            <ArticleDate>10 de julio del 2021</ArticleDate>
             <ArticleAuthor>
               <Author>
                 <ImageAuthor width={28} height={28} src="/me.jpg" />

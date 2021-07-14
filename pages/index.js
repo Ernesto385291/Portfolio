@@ -25,6 +25,9 @@ export default function Home({ data }) {
       <Head>
         <title>Ernesto Vizcaíno</title>
         <html lang="en" />
+        <meta name="robots" content="notranslate" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
         <meta
           name="description"
           content="My name is Ernesto Vizcaíno (@erne_vizcaino) i'm a coder, I specialize in Frontend Development and Mobile Development
