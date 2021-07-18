@@ -1,24 +1,6 @@
 import React, { Fragment } from "react";
 import Head from "next/head";
-import ReactMarkdown from "react-markdown";
-import Link from "next/link";
-
-import { BiArrowBack } from "react-icons/bi";
-
-import {
-  ArticleHeader,
-  ArticleTitle,
-  ArticleDate,
-  ArticleAuthor,
-  Author,
-  Name,
-  Social,
-  ImageAuthor,
-  ArticleContent,
-  GoBack,
-  GoBackContainer,
-  Comments,
-} from "../../styles/styles";
+import Markdown from "markdown-to-jsx";
 
 export default function article({ article }) {
   return (
@@ -52,36 +34,46 @@ export default function article({ article }) {
       </Head>
 
       {article ? (
-        <Fragment>
-          <GoBackContainer>
-            <Link href="/">
-              <GoBack>
-                <BiArrowBack size={20} /> Volver
-              </GoBack>
-            </Link>
-          </GoBackContainer>
-          <ArticleHeader>
-            <ArticleTitle>{article.Title}</ArticleTitle>
-            <ArticleDate>10 de julio del 2021</ArticleDate>
-            <ArticleAuthor>
-              <Author>
-                <ImageAuthor width={28} height={28} src="/me.jpg" />
-                <div>
-                  <Name>Ernesto Vizcaino</Name>
-                  <Social
-                    href="https://twitter.com/Erne_Vizcaino"
-                    target="_blank"
-                  >
-                    @erne_vizcaino
-                  </Social>
-                </div>
-              </Author>
-            </ArticleAuthor>
-          </ArticleHeader>
-          <ArticleContent>
-            <ReactMarkdown>{article.Content}</ReactMarkdown>
-          </ArticleContent>
-        </Fragment>
+        <div className="w-screen px-6 flex flex-col items-center relative">
+          <div className="flex flex-col items-center md:w-6/12">
+            <h1 className="font-bold text-[28px] text-center mt-10 md:text-3xl">
+              {article.Title}
+            </h1>
+            <div className="w-[fit-content] flex flex-col items-center mt-6">
+              <a
+                className="text-[#0FA958]"
+                href="https://twitter.com/Erne_Vizcaino"
+                target="_blank"
+              >
+                <img
+                  style={{ boxShadow: "0 0 0 2.5px #fff, 0 0 0 4.5px" }}
+                  className="w-[30px] h-[30px] rounded-full object-cover md:w-[40px] md:h-[40px] shadow-white dark:shadow-dark"
+                  src="/me.jpg"
+                  alt="Ernesto Vizcaíno"
+                  loading="lazy"
+                />
+              </a>
+              <h2 className="text-[#6A6A6A] mt-4 text-base dark:text-gray-300">
+                Ernesto Vizcaíno
+              </h2>
+              <time className="text-[#6A6A6A] text-base dark:text-gray-300">
+                {article.Creation}
+              </time>
+            </div>
+          </div>
+          <div className="md:w-10/12">
+            <img
+              src={article.Cover}
+              alt={article.Title}
+              className="w-full h-full mt-8 mb-10 rounded-lg"
+            />
+          </div>
+          <div className="md:w-6/12">
+            <Markdown className="prose lg:prose-lg dark:prose-dark">
+              {article.Content}
+            </Markdown>
+          </div>
+        </div>
       ) : (
         <p>Cargando...</p>
       )}
