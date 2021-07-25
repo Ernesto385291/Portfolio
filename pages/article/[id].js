@@ -9,6 +9,7 @@ export default function article({ article }) {
         <title>{`Ernesto Vizcaíno | ${article.Title}`}</title>
         <meta name="description" content={article.Description} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="author" content="Ernesto Vizcaíno" />
 
         {/* <!-- Essential Twitter Meta Tags --> */}
 
@@ -18,13 +19,14 @@ export default function article({ article }) {
           content={`Ernesto Vizcaíno | ${article.Title}`}
         />
         <meta name="twitter:description" content={article.Description} />
-
+        <meta name="twitter:image" content={article.Cover} />
         {/* <!-- Essential Facebook Meta Tags --> */}
 
         <meta
           property="og:title"
           content={`Ernesto Vizcaíno | ${article.Title}`}
         />
+        <meta property="og:image" content={article.Cover} />
         <meta property="og:description" content={article.Description} />
 
         <meta
