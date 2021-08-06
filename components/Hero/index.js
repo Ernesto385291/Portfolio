@@ -1,11 +1,9 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Navbar } from "../Navbar";
 
 export const Hero = () => {
   return (
-    <div className="h-screen flex flex-col justify-between">
-      <Navbar />
+    <div className="h-[95vh] flex flex-col justify-center items-center">
       <div className="flex flex-col items-center">
         <h1 className="text-lg font-semibold dark:text-white">
           Hi, I'm Ernesto Vizcaíno 🤘
