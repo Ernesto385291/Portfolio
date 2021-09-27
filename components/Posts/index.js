@@ -12,7 +12,7 @@ export const Posts = ({ data }) => {
         </h3>
       </div>
       <div className="flex overflow-x-auto mt-4">
-        {data.map((article) => {
+        {data.reverse().map((article) => {
           return <BlogCard key={article.id} {...article} />;
         })}
       </div>
