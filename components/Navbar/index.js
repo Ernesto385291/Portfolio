@@ -20,7 +20,7 @@ export const Navbar = () => {
         </a>
         <a
           className="dark:text-white"
-          href="https://timeline.ernestovizcaino.vercel.app"
+          href="https://www.polywork.com/erne_vizcaino"
         >
           Timeline
         </a>
