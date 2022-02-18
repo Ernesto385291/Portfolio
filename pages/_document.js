@@ -37,8 +37,8 @@ export default class MyDocument extends Document {
               var _paq = window._paq = window._paq || [];
               /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
               _paq.push(["setDocumentTitle", document.domain + "/" + document.title]);
-              _paq.push(["setCookieDomain", "*.ernestovizcaino.com"]);
-              _paq.push(["setDomains", ["*.ernestovizcaino.com"]]);
+              _paq.push(["setCookieDomain", "*.ernestovizcaino.vercel.app"]);
+              _paq.push(["setDomains", ["*.ernestovizcaino.vercel.app"]]);
               _paq.push(['trackPageView']);
               _paq.push(['enableLinkTracking']);
               (function() {

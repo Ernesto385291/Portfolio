@@ -8,7 +8,7 @@ const createSitemap = (posts) => `<?xml version="1.0" encoding="UTF-8"?>
           .map(({ id }) => {
             return `
                     <url>
-                        <loc>${`https://ernestovizcaino.com/article/${id}`}</loc>
+                        <loc>${`https://ernestovizcaino.vercel.app/article/${id}`}</loc>
                     </url>
                 `;
           })

@@ -36,10 +36,13 @@ export const Layout = ({
         {article ? (
           <meta
             property="og:url"
-            content={`https://ernestovizcaino.com/article/${articleId}`}
+            content={`https://ernestovizcaino.vercel.app/article/${articleId}`}
           />
         ) : (
-          <meta property="og:url" content={`https://ernestovizcaino.com`} />
+          <meta
+            property="og:url"
+            content={`https://ernestovizcaino.vercel.app`}
+          />
         )}
       </Head>
       <Navbar />

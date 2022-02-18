@@ -14,25 +14,25 @@ export const Navbar = () => {
       <div className="flex">
         <a
           className="mr-5 dark:text-white"
-          href="https://ernestovizcaino.com/#blog"
+          href="https://ernestovizcaino.vercel.app/#blog"
         >
           Blog
         </a>
         <a
           className="dark:text-white"
-          href="https://timeline.ernestovizcaino.com"
+          href="https://timeline.ernestovizcaino.vercel.app"
         >
           Timeline
         </a>
         <a
           className="mx-5 hidden dark:text-white md:block"
-          href="https://ernestovizcaino.com/#projects"
+          href="https://ernestovizcaino.vercel.app/#projects"
         >
           Projects
         </a>
         <a
           className="hidden dark:text-white md:block"
-          href="https://ernestovizcaino.com/#contact"
+          href="https://ernestovizcaino.vercel.app/#contact"
         >
           Contact
         </a>
