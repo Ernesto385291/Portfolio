@@ -60,31 +60,35 @@ export default function article({ article }) {
 }
 
 export async function getStaticPaths() {
-  // Call an external API endpoint to get posts
-  const res = await fetch("https://my-blog-strapi-js.herokuapp.com/posts/");
-  const posts = await res.json();
-
-  // Get the paths we want to pre-render based on posts
-  const paths = posts.map((post) => ({
-    params: { id: post.id.toString() },
-  }));
-
-  // We'll pre-render only these paths at build time.
-  // { fallback: false } means other routes should 404.
-  return { paths, fallback: false };
+  try {
+    const res = await fetch("https://my-blog-strapi-js.herokuapp.com/posts/");
+    if (!res.ok) {
+      return { paths: [], fallback: false };
+    }
+    const posts = await res.json();
+    const paths = Array.isArray(posts)
+      ? posts.map((post) => ({ params: { id: post.id?.toString() } }))
+      : [];
+    return { paths, fallback: false };
+  } catch {
+    return { paths: [], fallback: false };
+  }
 }
 
 export async function getStaticProps({ params }) {
-  // Call an external API endpoint to get posts.
-  const res = await fetch(
-    `https://my-blog-strapi-js.herokuapp.com/posts/${params.id}`
-  );
-  const article = await res.json();
-
-  return {
-    props: {
-      article,
-    },
-    revalidate: 1, // In seconds
-  };
+  try {
+    const res = await fetch(
+      `https://my-blog-strapi-js.herokuapp.com/posts/${params.id}`
+    );
+    if (!res.ok) {
+      return { notFound: true, revalidate: 60 };
+    }
+    const article = await res.json();
+    return {
+      props: { article },
+      revalidate: 60,
+    };
+  } catch {
+    return { notFound: true, revalidate: 60 };
+  }
 }

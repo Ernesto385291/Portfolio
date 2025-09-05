@@ -1,5 +1,4 @@
 import React from "react";
-import ReadMoreAndLess from "react-read-more-less";
 
 export const Projects = ({ data }) => {
   return (
@@ -11,7 +10,7 @@ export const Projects = ({ data }) => {
         </p>
       </div>
       <div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-        {data.map((project) => {
+        {(data ?? []).map((project) => {
           return (
             <Project
               key={project.id}
@@ -31,15 +30,7 @@ const Project = ({ name, details, link, technologies }) => {
     <div className="cursor-pointer p-6 border-gray-200 border-solid rounded-md border text-left flex-1 flex flex-col duration-200 hover:duration-200 hover:shadow-md">
       <h1 className="font-medium text-base my-4 dark:text-white">{name}</h1>
       {/* <ProjectCircle color="blue" /> */}
-      <div className="text-sm dark:text-white">
-        <ReadMoreAndLess
-          charLimit={90}
-          readMoreText="Read more"
-          readLessText="Read less"
-        >
-          {details}
-        </ReadMoreAndLess>
-      </div>
+      <div className="text-sm dark:text-white">{details}</div>
       <a
         className="no-underline text-blue-500 my-4 duration-200 hover:underline hover:duration-200"
         href={link}

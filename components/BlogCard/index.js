@@ -11,8 +11,8 @@ export const BlogCard = ({ id, Title, Description, Creation }) => {
       <p className="text-base font-normal antialiased mb-3 dark:text-white">
         {Description}
       </p>
-      <Link href="/article/[id]" as={`/article/${id}`}>
-        <a className="text-blue-500 cursor-pointer">LEER MÁS</a>
+      <Link href={`/article/${id}`} className="text-blue-500 cursor-pointer">
+        LEER MÁS
       </Link>
     </div>
   );
