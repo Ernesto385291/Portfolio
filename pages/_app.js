@@ -1,6 +1,5 @@
 import "../styles/globals.css";
 import "../styles/nprogress.css";
-import "tailwindcss/tailwind.css";
 
 import Router from "next/router";
 import NProgress from "nprogress";
