@@ -1,18 +1,41 @@
+"use client";
+
 import { Clock01Icon } from "@hugeicons/core-free-icons";
 import { HugeiconsIcon } from "@hugeicons/react";
+import { m, useReducedMotion } from "framer-motion";
 import Link from "next/link";
 import { Section } from "@/components/Section";
 import { readingTime, shortDate, timestamp } from "@/lib/format";
 
-export const Writing = ({ data }) => {
+export const Writing = ({
+  data,
+  id = "writing",
+  label = "Writing",
+}) => {
+  const reduceMotion = useReducedMotion();
   const posts = [...data].sort((a, b) => timestamp(b.Creation) - timestamp(a.Creation));
 
   return (
-    <Section id="writing" label="Writing">
+    <Section id={id} label={label}>
       {posts.length ? (
         <ul className="mt-8 -mx-3">
           {posts.map((post, index) => (
-            <li key={post.id} className="reveal" style={{ "--rise-delay": index % 4 }}>
+            <m.li
+              key={post.id}
+              initial={{
+                opacity: 0,
+                y: reduceMotion ? 0 : 12,
+                filter: reduceMotion ? "none" : "blur(4px)",
+              }}
+              whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+              viewport={{ once: true, amount: 0.4 }}
+              transition={{
+                type: "spring",
+                duration: 0.4,
+                bounce: 0,
+                delay: reduceMotion ? 0 : index * 0.06,
+              }}
+            >
               <Link
                 href={`/article/${post.id}`}
                 className="group/row flex items-center gap-4 rounded-xl px-3 py-2.5 transition-colors duration-200 hover:bg-surface focus-visible:bg-surface focus-visible:outline-none"
@@ -20,7 +43,7 @@ export const Writing = ({ data }) => {
                 <time className="meta w-[4.75rem] shrink-0">
                   {shortDate(post.Creation)}
                 </time>
-                <span className="min-w-0 flex-1 truncate text-base text-foreground">
+                <span className="min-w-0 flex-1 text-pretty text-base text-foreground">
                   {post.Title}
                 </span>
                 <span className="meta flex shrink-0 items-center gap-1.5">
@@ -28,7 +51,7 @@ export const Writing = ({ data }) => {
                   {readingTime(post.Content)} m
                 </span>
               </Link>
-            </li>
+            </m.li>
           ))}
         </ul>
       ) : (

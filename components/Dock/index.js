@@ -3,16 +3,20 @@
 import {
   Briefcase01Icon,
   CubeIcon,
+  Download04Icon,
   Layers01Icon,
   Mail01Icon,
   Moon02Icon,
   PenTool02Icon,
+  PdfIcon,
   Sun03Icon,
   UserIcon,
 } from "@hugeicons/core-free-icons";
 import { HugeiconsIcon } from "@hugeicons/react";
+import { AnimatePresence, m, useReducedMotion } from "framer-motion";
 import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { resumes } from "@/data/resumes";
 import { cn } from "@/lib/utils";
 
 const items = [
@@ -33,28 +37,71 @@ const iconClass =
 export const Dock = () => {
   const { setTheme, resolvedTheme } = useTheme();
   const [active, setActive] = useState(null);
+  const [resumeOpen, setResumeOpen] = useState(false);
+  const resumeMenuRef = useRef(null);
+  const reduceMotion = useReducedMotion();
 
   useEffect(() => {
-    const sections = items
-      .map((item) => document.getElementById(item.id))
-      .filter(Boolean);
-    if (!sections.length) return;
+    let frame = 0;
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-        if (visible) setActive(visible.target.id);
-      },
-      // Bias the band toward the upper-middle of the viewport so the active
-      // item matches what the reader is actually looking at.
-      { rootMargin: "-25% 0px -55% 0px", threshold: [0, 0.25, 0.5, 1] },
-    );
+    // Pick the last section whose top edge has crossed a line 35% down the
+    // viewport. Comparing IntersectionObserver ratios instead would bias
+    // toward short sections, because a tall section covering the whole
+    // viewport still reports a small ratio of its own height.
+    const measure = () => {
+      frame = 0;
+      const line = window.innerHeight * 0.35;
+      let current = items[0].id;
 
-    sections.forEach((section) => observer.observe(section));
-    return () => observer.disconnect();
+      for (const item of items) {
+        const el = document.getElementById(item.id);
+        if (!el) continue;
+        if (el.getBoundingClientRect().top - line <= 0) current = item.id;
+      }
+
+      // Always light up the last item once the page is scrolled to the end,
+      // otherwise a short final section can never reach the line.
+      const atBottom =
+        window.innerHeight + window.scrollY >=
+        document.documentElement.scrollHeight - 2;
+      if (atBottom) current = items[items.length - 1].id;
+
+      setActive(current);
+    };
+
+    const onScroll = () => {
+      if (!frame) frame = requestAnimationFrame(measure);
+    };
+
+    measure();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll, { passive: true });
+    return () => {
+      if (frame) cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
   }, []);
+
+  useEffect(() => {
+    if (!resumeOpen) return;
+
+    const closeOnOutsideClick = (event) => {
+      if (!resumeMenuRef.current?.contains(event.target)) {
+        setResumeOpen(false);
+      }
+    };
+    const closeOnEscape = (event) => {
+      if (event.key === "Escape") setResumeOpen(false);
+    };
+
+    document.addEventListener("pointerdown", closeOnOutsideClick);
+    document.addEventListener("keydown", closeOnEscape);
+    return () => {
+      document.removeEventListener("pointerdown", closeOnOutsideClick);
+      document.removeEventListener("keydown", closeOnEscape);
+    };
+  }, [resumeOpen]);
 
   return (
     <nav
@@ -82,6 +129,83 @@ export const Dock = () => {
         ))}
 
         <li aria-hidden="true" className="mx-1 h-5 w-px bg-border" />
+
+        <li ref={resumeMenuRef} className="relative">
+          <AnimatePresence initial={false}>
+            {resumeOpen ? (
+              <m.div
+                id="resume-download-menu"
+                initial={{
+                  opacity: 0,
+                  y: reduceMotion ? 0 : 8,
+                  scale: reduceMotion ? 1 : 0.96,
+                  filter: reduceMotion ? "none" : "blur(4px)",
+                }}
+                animate={{ opacity: 1, y: 0, scale: 1, filter: "blur(0px)" }}
+                exit={{
+                  opacity: 0,
+                  y: reduceMotion ? 0 : 4,
+                  scale: reduceMotion ? 1 : 0.98,
+                  filter: reduceMotion ? "none" : "blur(3px)",
+                }}
+                transition={{ type: "spring", duration: 0.3, bounce: 0 }}
+                className="absolute right-0 bottom-[calc(100%+0.75rem)] w-56 origin-bottom-right rounded-2xl border border-border bg-background/95 p-1.5 shadow-card backdrop-blur-xl"
+              >
+                <p className="label px-3 pt-2 pb-1.5">Download résumé</p>
+                {resumes.map((resume, index) => (
+                  <m.a
+                    key={resume.locale}
+                    href={`/resume/${resume.locale}`}
+                    download={resume.filename}
+                    initial={{ opacity: 0, x: reduceMotion ? 0 : -5 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{
+                      type: "spring",
+                      duration: 0.3,
+                      bounce: 0,
+                      delay: reduceMotion ? 0 : index * 0.05,
+                    }}
+                    onClick={() => setResumeOpen(false)}
+                    className="group/resume flex min-h-10 items-center gap-3 rounded-xl px-3 py-2 text-sm text-foreground transition-colors duration-200 hover:bg-muted focus-visible:bg-muted focus-visible:outline-none"
+                  >
+                    <HugeiconsIcon
+                      icon={PdfIcon}
+                      size={17}
+                      strokeWidth={2}
+                      className="text-faint transition-colors duration-200 group-hover/resume:text-foreground"
+                    />
+                    <span className="flex-1">{resume.label}</span>
+                    <HugeiconsIcon
+                      icon={Download04Icon}
+                      size={15}
+                      strokeWidth={2}
+                      className="text-faint transition-[color,transform] duration-200 group-hover/resume:translate-y-px group-hover/resume:text-foreground"
+                    />
+                  </m.a>
+                ))}
+              </m.div>
+            ) : null}
+          </AnimatePresence>
+
+          <button
+            type="button"
+            aria-label="Download résumé"
+            aria-expanded={resumeOpen}
+            aria-controls="resume-download-menu"
+            onClick={() => setResumeOpen((open) => !open)}
+            className={cn(
+              buttonClass,
+              resumeOpen
+                ? "bg-muted text-foreground"
+                : "text-faint hover:text-foreground",
+              "w-auto min-w-10 px-2.5",
+            )}
+          >
+            <span className="font-mono text-[11px] font-medium tracking-[0.06em]">
+              CV
+            </span>
+          </button>
+        </li>
 
         <li>
           <button

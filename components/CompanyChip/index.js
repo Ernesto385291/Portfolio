@@ -1,4 +1,5 @@
 import * as icons from "simple-icons";
+import Image from "next/image";
 
 const toIconKey = (slug) => `si${slug.charAt(0).toUpperCase()}${slug.slice(1)}`;
 
@@ -20,7 +21,24 @@ function luminance(hex) {
  * Falls back to the company initial when there is no brand mark, and to a
  * neutral chip when the brand colour is too dark or too light to tint with.
  */
-export const CompanyChip = ({ company, icon }) => {
+export const CompanyChip = ({ company, icon, logo }) => {
+  if (logo) {
+    return (
+      <span
+        aria-hidden="true"
+        className="grid size-[22px] shrink-0 place-items-center overflow-hidden rounded-md bg-white shadow-[0_0_0_1px_rgba(0,0,0,0.08)] dark:bg-white/95"
+      >
+        <Image
+          src={logo}
+          alt=""
+          width={15}
+          height={15}
+          className="size-[15px] object-contain"
+        />
+      </span>
+    );
+  }
+
   const mark = icon ? icons[toIconKey(icon)] : null;
 
   if (mark) {

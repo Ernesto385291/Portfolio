@@ -1,11 +1,14 @@
-import { ArrowLeft01Icon, Clock01Icon } from "@hugeicons/core-free-icons";
+import {
+  ArrowLeft01Icon,
+  Clock01Icon,
+  TextAlignLeftIcon,
+} from "@hugeicons/core-free-icons";
 import { HugeiconsIcon } from "@hugeicons/react";
-import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import Markdown from "markdown-to-jsx";
-import { profile } from "../../../data/profile";
-import { longDate, readingTime } from "../../../lib/format";
+import { Writing } from "../../../components/Writing";
+import { longDate, readingTime, wordCount } from "../../../lib/format";
 import { getArticle, getPosts } from "../../../lib/content";
 
 export const revalidate = 3600;
@@ -30,11 +33,9 @@ export async function generateMetadata({ params }) {
     openGraph: {
       type: "article",
       url: `/article/${id}`,
-      images: article.Cover ? [article.Cover] : [],
     },
     twitter: {
-      card: "summary_large_image",
-      images: article.Cover ? [article.Cover] : [],
+      card: "summary",
     },
   };
 }
@@ -47,25 +48,37 @@ export default async function ArticlePage({ params }) {
     notFound();
   }
 
+  const posts = await getPosts();
+  const otherPosts = posts.filter((post) => String(post.id) !== String(id));
+
   return (
     <article className="pb-32">
-      <div className="column flex items-center justify-between pt-8 pb-12 md:pt-10">
+      <div className="column pt-8 pb-12 md:pt-10">
         <Link
           href="/#writing"
           className="meta -mx-2 flex items-center gap-1.5 rounded-lg px-2 py-1 transition-colors duration-200 hover:text-foreground"
         >
           <HugeiconsIcon icon={ArrowLeft01Icon} size={13} strokeWidth={2} />
-          WRITING
+          BACK
         </Link>
-        <span className="meta flex items-center gap-1.5">
-          <HugeiconsIcon icon={Clock01Icon} size={13} strokeWidth={2} />
-          {readingTime(article.Content)} m
-        </span>
       </div>
 
       <header className="column">
-        <p className="meta">{longDate(article.Creation)}</p>
-        <h1 className="mt-3 text-2xl leading-[1.25] font-medium tracking-[-0.02em] text-foreground md:text-[28px]">
+        <div className="flex items-center justify-between gap-4">
+          <time className="meta">{longDate(article.Creation)}</time>
+          <div className="meta flex items-center gap-5">
+            <span className="flex items-center gap-1.5">
+              <HugeiconsIcon icon={Clock01Icon} size={14} strokeWidth={2} />
+              {readingTime(article.Content)} m
+            </span>
+            <span className="flex items-center gap-1.5">
+              <HugeiconsIcon icon={TextAlignLeftIcon} size={14} strokeWidth={2} />
+              {wordCount(article.Content)} words
+            </span>
+          </div>
+        </div>
+
+        <h1 className="mt-8 text-2xl leading-[1.25] font-medium tracking-[-0.02em] text-foreground md:text-[28px]">
           {article.Title}
         </h1>
         {article.Description ? (
@@ -74,45 +87,23 @@ export default async function ArticlePage({ params }) {
           </p>
         ) : null}
 
-        <div className="mt-7 flex items-center gap-2.5">
-          <Image
-            src={profile.avatar}
-            alt={profile.name}
-            width={28}
-            height={28}
-            className="image-outline size-7 rounded-lg object-cover"
-          />
-          <span className="text-sm text-muted-foreground">{profile.name}</span>
-        </div>
       </header>
 
-      {article.Cover ? (
-        <div className="my-14 border-y border-border bg-dot-grid [background-size:8px_8px] py-12">
-          <div className="column">
-            {/* Outer radius 14px = inner radius 8px + 6px frame padding. */}
-            <div className="rounded-xl bg-card p-1.5 shadow-tilt">
-              <div className="image-outline relative aspect-16/9 overflow-hidden rounded-md">
-                <Image
-                  src={article.Cover}
-                  alt={article.Title}
-                  fill
-                  priority
-                  sizes="(min-width: 640px) 592px, 100vw"
-                  className="object-cover"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      ) : (
-        <div className="h-14" />
-      )}
-
-      <div className="column">
+      <div className="column mt-14">
         <div className="prose prose-neutral max-w-none dark:prose-invert prose-headings:font-medium prose-headings:tracking-[-0.011em] prose-p:leading-[1.7] prose-p:text-muted-foreground prose-li:text-muted-foreground prose-a:font-normal prose-a:text-foreground prose-a:decoration-border prose-a:underline-offset-4 hover:prose-a:decoration-foreground prose-code:rounded prose-code:bg-muted prose-code:px-1.5 prose-code:py-0.5 prose-code:font-mono prose-code:text-[0.875em] prose-code:font-normal prose-code:before:content-none prose-code:after:content-none prose-pre:rounded-xl prose-pre:bg-surface prose-pre:text-foreground prose-img:image-outline prose-img:rounded-xl">
           <Markdown>{article.Content ?? ""}</Markdown>
         </div>
       </div>
+
+      {otherPosts.length ? (
+        <div className="mt-24">
+          <Writing
+            data={otherPosts}
+            id="more-writing"
+            label="More writing"
+          />
+        </div>
+      ) : null}
     </article>
   );
 }

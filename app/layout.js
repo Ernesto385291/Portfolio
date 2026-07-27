@@ -2,6 +2,7 @@ import { Figtree, JetBrains_Mono } from "next/font/google";
 import Script from "next/script";
 import { Dock } from "../components/Dock";
 import { Footer } from "../components/Footer";
+import { MotionProvider } from "../components/MotionProvider";
 import { ThemeProvider } from "../components/ThemeProvider";
 import "../styles/globals.css";
 
@@ -26,7 +27,7 @@ export const metadata = {
     template: "Ernesto Vizcaíno | %s",
   },
   description:
-    "Frontend and mobile developer specializing in React, JavaScript, and Python.",
+    "Full-stack AI and product engineer building fintech, SaaS, mobile, and applied machine-learning products.",
   authors: [{ name: "Ernesto Vizcaíno" }],
   robots: { index: true, follow: true },
   openGraph: {
@@ -58,15 +59,17 @@ export default function RootLayout({ children }) {
     >
       <body>
         <ThemeProvider>
-          <a
-            href="#main"
-            className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-100 focus:rounded-xl focus:bg-primary focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-primary-foreground"
-          >
-            Skip to content
-          </a>
-          <main id="main">{children}</main>
-          <Footer />
-          <Dock />
+          <MotionProvider>
+            <a
+              href="#main"
+              className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-100 focus:rounded-xl focus:bg-primary focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-primary-foreground"
+            >
+              Skip to content
+            </a>
+            <main id="main">{children}</main>
+            <Footer />
+            <Dock />
+          </MotionProvider>
         </ThemeProvider>
         <Script id="matomo" strategy="afterInteractive">
           {`

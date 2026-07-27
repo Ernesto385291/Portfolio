@@ -13,7 +13,7 @@ export const Footer = () => {
           <HugeiconsIcon icon={Location01Icon} size={13} strokeWidth={2} />
           {profile.location}
         </p>
-        <p className="meta uppercase">Built with Next.js</p>
+        <p className="meta uppercase">{profile.name}</p>
       </div>
     </footer>
   );

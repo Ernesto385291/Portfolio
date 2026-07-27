@@ -188,56 +188,42 @@ En la época actual, donde JavaScript es uno de los lenguajes de programación m
 
 export const projects = [
   {
-    id: 2,
-    Project_Title: "Traver App",
+    id: "kashi",
+    Project_Title: "Kashi",
     Description:
-      "With the Traver App you can connect with all the people of your city in a single online community where you can find photos, news, events, food, and much more close to you. I have learned React Native, Node.js, AWS, GCP, Styled Components, and MySQL.",
-    Project_URL: "https://traverapp.com/",
+      "Offline-first point of sale, inventory and customer-credit platform for small businesses on mobile and web.",
+    Project_URL: "https://www.getkashi.com/",
+    Image: "/brands/kashi.png",
+    Accent: "bg-[#e8f2ff] dark:bg-[#17243a]",
+    Meta: "Founder · 2026—Now",
   },
   {
-    id: 3,
-    Project_Title: 'Miel "El Meno"',
-    Description: 'Web page for Miel "El Meno" made with Next.js.',
-    Project_URL: "https://el-meno.vercel.app/",
-  },
-  {
-    id: 5,
-    Project_Title: "Image Recognition",
+    id: "pasaegel",
+    Project_Title: "PasaEGEL",
     Description:
-      "Web application using an image recognition model. I learned TensorFlow.js.",
-    Project_URL: "https://tensor-flow-js.vercel.app/",
+      "Exam-prep SaaS with interactive simulations, study modules, payments, analytics and an organic SEO growth engine.",
+    Project_URL: "https://www.pasaegel.com/",
+    Image: "/brands/pasaegel.png",
+    Accent: "bg-[#f2ecff] dark:bg-[#29203b]",
+    Meta: "Founder · 2026—Now",
   },
   {
-    id: 6,
-    Project_Title: "Face Recognition",
-    Description: "Face recognition in the browser using Face-api.js.",
-    Project_URL: "https://face-recognition-coral.now.sh/",
-  },
-  {
-    id: 7,
-    Project_Title: "Podcast App",
-    Description: "A podcast app created with Next.js.",
-    Project_URL: "https://podcast-2x1n9i9ko.now.sh/",
-  },
-  {
-    id: 8,
-    Project_Title: "Rick and Morty Encyclopedia",
+    id: "oliver-ai",
+    Project_Title: "Oliver AI",
     Description:
-      "A basic Rick and Morty encyclopedia using React and the Rick and Morty API.",
-    Project_URL: "https://rick-and-morty-enciclopedia.netlify.app/",
+      "AI workflows for financial services, spanning loan origination, risk review, compliance and document analysis.",
+    Project_URL: "https://www.tryoliver.ai/en",
+    Image: "/brands/oliver.ico",
+    Accent: "bg-[#e9f7ef] dark:bg-[#183027]",
+    Meta: "Technical Co-Founder · 2024—2025",
   },
   {
-    id: 9,
-    Project_Title: "Guess the RGB Color",
-    Description: "Guess the RGB color is a vanilla JavaScript app.",
-    Project_URL: "https://ernesto385291.github.io/RGB-Game/",
-  },
-  {
-    id: 11,
-    Project_Title: "Strapi AWS with Rekognition Provider",
+    id: "gaia-ogle",
+    Project_Title: "Gaia–OGLE Star Classifier",
     Description:
-      "AWS S3 provider for Strapi upload with Rekognition helps you detect and prevent inappropriate images.",
-    Project_URL:
-      "https://www.npmjs.com/package/strapi-provider-upload-aws-s3-with-rekognition",
+      "XGBoost classifier trained on 137,258 variable stars across 11 classes, reaching 0.9847 weighted F1 against OGLE labels.",
+    Accent: "bg-[#fff2dc] dark:bg-[#382b18]",
+    Monogram: "✦",
+    Meta: "ML research · 2026",
   },
 ];

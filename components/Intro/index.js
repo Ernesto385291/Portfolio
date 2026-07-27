@@ -4,6 +4,7 @@ import { Tick02Icon } from "@hugeicons/core-free-icons";
 import { HugeiconsIcon } from "@hugeicons/react";
 import Image from "next/image";
 import { useCallback, useEffect, useState } from "react";
+import { VerifiedBadge } from "@/components/VerifiedBadge";
 import { profile } from "@/data/profile";
 import { cn } from "@/lib/utils";
 
@@ -66,10 +67,11 @@ export const Intro = () => {
       </div>
 
       <h1
-        className="rise mt-5 text-base font-medium text-foreground"
+        className="rise mt-5 flex items-center gap-1.5 text-base font-medium text-foreground"
         style={{ "--rise-delay": 1 }}
       >
         {profile.name}
+        {profile.verified ? <VerifiedBadge /> : null}
       </h1>
       <p
         className="rise text-base text-muted-foreground"

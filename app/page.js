@@ -1,5 +1,4 @@
 import { Contact } from "../components/Contact";
-import { CoverStrip } from "../components/CoverStrip";
 import { Experience } from "../components/Experience";
 import { Intro } from "../components/Intro";
 import { Projects } from "../components/Projects";
@@ -30,8 +29,9 @@ export default async function HomePage() {
         <Stack />
       </div>
 
-      <CoverStrip items={posts} />
-      <Writing data={posts} />
+      <div className="mt-20">
+        <Writing data={posts} />
+      </div>
 
       <div className="mt-20">
         <Contact />
