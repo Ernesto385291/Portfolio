@@ -1,5 +1,6 @@
 import { Figtree, JetBrains_Mono } from "next/font/google";
 import Script from "next/script";
+import { Analytics } from "@vercel/analytics/next";
 import { Dock } from "../components/Dock";
 import { Footer } from "../components/Footer";
 import { MotionProvider } from "../components/MotionProvider";
@@ -96,6 +97,7 @@ export default function RootLayout({ children }) {
             })();
           `}
         </Script>
+        <Analytics />
       </body>
     </html>
   );
