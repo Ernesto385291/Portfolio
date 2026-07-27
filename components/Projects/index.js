@@ -20,7 +20,7 @@ const ProjectMark = ({ project }) => (
         height={80}
         quality={100}
         sizes="40px"
-        className="size-10 object-contain"
+        className="size-10 rounded-[10px] object-contain"
       />
     ) : (
       <span className="font-mono text-sm text-foreground/70">
