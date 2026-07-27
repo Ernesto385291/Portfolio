@@ -1,44 +1,286 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap");
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
 
-::-moz-selection {
-  /* Code for Firefox */
-  color: white;
-  background: #6bf5f0;
+@custom-variant dark (&:is(.dark *));
+@plugin "@tailwindcss/typography";
+@source "../app";
+@source "../components";
+
+/* ------------------------------------------------------------------ *
+ * Theme extensions
+ * ------------------------------------------------------------------ */
+@theme {
+  /* Soft, wide shadows — the reference leans on these instead of borders. */
+  --shadow-card: 0 1px 2px -1px oklch(0 0 0 / 0.06),
+    0 4px 12px -4px oklch(0 0 0 / 0.06), 0 12px 32px -12px oklch(0 0 0 / 0.08);
+  --shadow-tilt: 0 2px 4px -2px oklch(0 0 0 / 0.08),
+    0 8px 20px -6px oklch(0 0 0 / 0.1), 0 24px 48px -16px oklch(0 0 0 / 0.12);
+
+  --background-image-dot-grid: radial-gradient(
+    circle at 1px 1px,
+    var(--grid-dot) 1px,
+    transparent 0
+  );
 }
 
-::selection {
-  color: white;
-  background: #6bf5f0;
+/* ------------------------------------------------------------------ *
+ * Token → utility mapping
+ * ------------------------------------------------------------------ */
+@theme inline {
+  --font-sans: var(--font-figtree), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, SFMono-Regular,
+    monospace;
+
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  /* Tertiary text: section labels, dates, meta. Lighter than body copy. */
+  --color-faint: var(--faint);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-foreground: var(--foreground);
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
 }
 
-html {
-  scroll-behavior: smooth;
+/* ------------------------------------------------------------------ *
+ * Light — the primary theme. Pure white, pure neutral, no accent hue.
+ * Colour only ever comes from photography and brand marks.
+ * ------------------------------------------------------------------ */
+:root {
+  --radius: 0.625rem;
+
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.205 0 0);
+
+  --surface: oklch(0.977 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.205 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.205 0 0);
+
+  /* Solid buttons are near-black, not a brand colour. */
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+
+  --secondary: oklch(0.968 0 0);
+  --secondary-foreground: oklch(0.245 0 0);
+
+  --muted: oklch(0.968 0 0);
+  --muted-foreground: oklch(0.52 0 0);
+  --faint: oklch(0.565 0 0);
+
+  --accent: oklch(0.958 0 0);
+  --accent-foreground: oklch(0.235 0 0);
+
+  --destructive: oklch(0.577 0.245 27.325);
+
+  --border: oklch(0.925 0 0);
+  --input: oklch(0.968 0 0);
+  --ring: oklch(0.62 0 0);
+
+  --grid-dot: oklch(0.205 0 0 / 0.11);
+  --image-outline: rgba(0, 0, 0, 0.1);
 }
 
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: "Roboto", sans-serif;
+/* ------------------------------------------------------------------ *
+ * Dark — a clean neutral inversion, no warmth, same structure.
+ * ------------------------------------------------------------------ */
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.96 0 0);
+
+  --surface: oklch(0.185 0 0);
+  --card: oklch(0.185 0 0);
+  --card-foreground: oklch(0.96 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.96 0 0);
+
+  --primary: oklch(0.96 0 0);
+  --primary-foreground: oklch(0.185 0 0);
+
+  --secondary: oklch(0.235 0 0);
+  --secondary-foreground: oklch(0.96 0 0);
+
+  --muted: oklch(0.225 0 0);
+  --muted-foreground: oklch(0.655 0 0);
+  --faint: oklch(0.6 0 0);
+
+  --accent: oklch(0.245 0 0);
+  --accent-foreground: oklch(0.96 0 0);
+
+  --destructive: oklch(0.704 0.191 22.216);
+
+  --border: oklch(1 0 0 / 9%);
+  --input: oklch(1 0 0 / 7%);
+  --ring: oklch(0.55 0 0);
+
+  --grid-dot: oklch(1 0 0 / 0.09);
+  --image-outline: rgba(255, 255, 255, 0.1);
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
+/* ------------------------------------------------------------------ *
+ * Base
+ * ------------------------------------------------------------------ */
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
 
-* {
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-}
+  * {
+    @apply border-border;
+  }
 
-@media (prefers-color-scheme: dark) {
+  html {
+    @apply font-sans;
+    scroll-behavior: smooth;
+    scroll-padding-top: 3rem;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  html,
   body {
-    color: #fff;
-    background-color: #1e2838;
+    padding: 0;
+    margin: 0;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-size: 1rem;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    font-variant-numeric: tabular-nums;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    text-wrap: balance;
+    letter-spacing: -0.011em;
+    font-weight: 500;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  :focus-visible {
+    @apply outline-ring;
+    outline-width: 2px;
+    outline-offset: 2px;
+  }
+
+  ::selection {
+    background: var(--foreground);
+    color: var(--background);
+  }
+
+  ::-moz-selection {
+    background: var(--foreground);
+    color: var(--background);
+  }
+}
+
+/* ------------------------------------------------------------------ *
+ * Utilities
+ * ------------------------------------------------------------------ */
+
+/* The single narrow reading column the whole page is built on. */
+@utility column {
+  width: 100%;
+  max-width: 40rem;
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+}
+
+/* Small mono uppercase section label (WORK, WRITING, CONTACT…). */
+@utility label {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--faint);
+}
+
+/* Mono metadata: dates, durations, times, coordinates. */
+@utility meta {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.01em;
+  color: var(--faint);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Subtle 1px outline on images — pure black/white only, never tinted. */
+@utility image-outline {
+  outline: 1px solid var(--image-outline);
+  outline-offset: -1px;
+}
+
+/* ------------------------------------------------------------------ *
+ * Motion
+ * ------------------------------------------------------------------ */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Staggered entrance, runs once on load. */
+@media (prefers-reduced-motion: no-preference) {
+  .rise {
+    opacity: 0;
+    animation: rise 620ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation-delay: calc(var(--rise-delay, 0) * 70ms);
+    will-change: transform, opacity;
+  }
+}
+
+/* Scroll-linked reveal — progressive enhancement, no JS. Content is
+ * visible by default; only browsers with view timelines animate it. */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal {
+      animation: rise linear both;
+      animation-timeline: view();
+      animation-range: entry 2% cover 20%;
+    }
   }
 }

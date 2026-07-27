@@ -1,89 +1,20 @@
-import React from "react";
-import Image from "next/image";
+import { Location01Icon } from "@hugeicons/core-free-icons";
+import { HugeiconsIcon } from "@hugeicons/react";
+import { profile } from "@/data/profile";
 
 export const Footer = () => {
   return (
-    <footer className="flex flex-col justify-between items-center md:flex-row mx-5 my-20 md:mx-40">
-      <aside className="flex flex-row justify-between items-center">
-        <a
-          className="mr-1"
-          href="https://twitter.com/erne_vizcaino"
-          target="_blank"
-          style={{
-            filter:
-              "invert(69%) sepia(59%) saturate(4649%) hue-rotate(181deg) brightness(96%) contrast(98%)",
-          }}
-        >
-          <Image
-            src="/twitter.svg"
-            alt="Ernesto Vizcaíno Twitter"
-            width={30}
-            height={30}
-          />
-        </a>
-        <a
-          className="mr-1"
-          href="https://platzi.com/@Erne_Vizcaino/"
-          target="_blank"
-        >
-          <Image
-            src="/platzi_logo.png"
-            alt="Ernesto Vizcaíno Platzi"
-            width={35}
-            height={35}
-          />
-        </a>
-
-        <a
-          className="mr-2"
-          href="https://www.instagram.com/erne_vizcaino/"
-          target="_blank"
-        >
-          <Image
-            src="/instagram_logo.svg"
-            alt="Ernesto Vizcaíno Instagram"
-            width={35}
-            height={35}
-          />
-        </a>
-        <a
-          className="mr-2"
-          href="http://linkedin.com/in/erne-vizcaino/"
-          target="_blank"
-          style={{
-            filter:
-              "invert(25%) sepia(54%) saturate(2830%) hue-rotate(200deg) brightness(97%) contrast(87%)",
-          }}
-        >
-          <Image
-            src="/linkedin.svg"
-            alt="Ernesto Vizcaíno Linkedin"
-            width={25}
-            height={25}
-          />
-        </a>
-        <a
-          className="mr-2"
-          href="https://github.com/Ernesto385291/"
-          target="_blank"
-          style={{
-            filter:
-              "invert(63%) sepia(8%) saturate(102%) hue-rotate(7deg) brightness(89%) contrast(89%)",
-          }}
-        >
-          <Image
-            src="/github.svg"
-            alt="Ernesto Vizcaíno Github"
-            width={25}
-            height={25}
-          />
-        </a>
-      </aside>
-      <aside>
-        <p className="text-base text-gray-500">
-          Copyright © 2021 Ernesto Vizcaíno. All rights reserved.
+    <footer className="column pt-24 pb-32">
+      <p className="text-center text-sm text-muted-foreground">
+        © {new Date().getFullYear()} {profile.name}
+      </p>
+      <div className="mt-14 flex items-center justify-between">
+        <p className="meta flex items-center gap-1.5 uppercase">
+          <HugeiconsIcon icon={Location01Icon} size={13} strokeWidth={2} />
+          {profile.location}
         </p>
-      </aside>
+        <p className="meta uppercase">Built with Next.js</p>
+      </div>
     </footer>
   );
 };

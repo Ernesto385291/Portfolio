@@ -1,0 +1,95 @@
+import { Figtree, JetBrains_Mono } from "next/font/google";
+import Script from "next/script";
+import { Dock } from "../components/Dock";
+import { Footer } from "../components/Footer";
+import { ThemeProvider } from "../components/ThemeProvider";
+import "../styles/globals.css";
+
+const siteUrl = "https://ernestovizcaino.vercel.app";
+
+const figtree = Figtree({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-figtree",
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-jetbrains-mono",
+});
+
+export const metadata = {
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: "Ernesto Vizcaíno",
+    template: "Ernesto Vizcaíno | %s",
+  },
+  description:
+    "Frontend and mobile developer specializing in React, JavaScript, and Python.",
+  authors: [{ name: "Ernesto Vizcaíno" }],
+  robots: { index: true, follow: true },
+  openGraph: {
+    type: "website",
+    siteName: "Ernesto Vizcaíno",
+    images: ["https://i.imgur.com/Hi2WGWX.png"],
+  },
+  twitter: {
+    card: "summary",
+    creator: "@erne_vizcaino",
+    images: ["https://i.imgur.com/Hi2WGWX.png"],
+  },
+  icons: { icon: "/favicon.ico" },
+};
+
+export const viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#242424" },
+  ],
+};
+
+export default function RootLayout({ children }) {
+  return (
+    <html
+      lang="en"
+      className={`${figtree.variable} ${jetbrainsMono.variable}`}
+      suppressHydrationWarning
+    >
+      <body>
+        <ThemeProvider>
+          <a
+            href="#main"
+            className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-100 focus:rounded-xl focus:bg-primary focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-primary-foreground"
+          >
+            Skip to content
+          </a>
+          <main id="main">{children}</main>
+          <Footer />
+          <Dock />
+        </ThemeProvider>
+        <Script id="matomo" strategy="afterInteractive">
+          {`
+            var _paq = window._paq = window._paq || [];
+            _paq.push(["setDocumentTitle", document.domain + "/" + document.title]);
+            _paq.push(["setCookieDomain", "*.ernestovizcaino.vercel.app"]);
+            _paq.push(["setDomains", ["*.ernestovizcaino.vercel.app"]]);
+            _paq.push(["trackPageView"]);
+            _paq.push(["enableLinkTracking"]);
+            (function() {
+              var u = "https://analytics.traverapp.com/";
+              _paq.push(["setTrackerUrl", u + "matomo.php"]);
+              _paq.push(["setSiteId", "4"]);
+              var d = document;
+              var g = d.createElement("script");
+              var s = d.getElementsByTagName("script")[0];
+              g.async = true;
+              g.src = u + "matomo.js";
+              s.parentNode.insertBefore(g, s);
+            })();
+          `}
+        </Script>
+      </body>
+    </html>
+  );
+}
