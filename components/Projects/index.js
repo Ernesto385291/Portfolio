@@ -4,6 +4,7 @@ import { ArrowUpRight01Icon } from "@hugeicons/core-free-icons";
 import { HugeiconsIcon } from "@hugeicons/react";
 import { m, useReducedMotion } from "framer-motion";
 import Image from "next/image";
+import posthog from "posthog-js";
 import { Section } from "@/components/Section";
 
 const ProjectMark = ({ project }) => (
@@ -59,6 +60,12 @@ export const Projects = ({ data }) => {
                 whileHover={reduceMotion ? undefined : { x: 3 }}
                 whileTap={reduceMotion ? undefined : { scale: 0.99 }}
                 transition={{ type: "spring", duration: 0.3, bounce: 0 }}
+                onClick={() =>
+                  posthog.capture("project_link_clicked", {
+                    project_title: project.Project_Title,
+                    project_url: project.Project_URL,
+                  })
+                }
                 className="group/row flex items-center gap-4 rounded-xl px-3 py-3 transition-colors duration-200 hover:bg-surface focus-visible:bg-surface focus-visible:outline-none"
               >
                 <ProjectMark project={project} />

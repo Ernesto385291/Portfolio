@@ -16,6 +16,7 @@ import { HugeiconsIcon } from "@hugeicons/react";
 import { AnimatePresence, m, useReducedMotion } from "framer-motion";
 import { useTheme } from "next-themes";
 import { useEffect, useRef, useState } from "react";
+import posthog from "posthog-js";
 import { resumes } from "@/data/resumes";
 import { cn } from "@/lib/utils";
 
@@ -165,7 +166,13 @@ export const Dock = () => {
                       bounce: 0,
                       delay: reduceMotion ? 0 : index * 0.05,
                     }}
-                    onClick={() => setResumeOpen(false)}
+                    onClick={() => {
+                      posthog.capture("resume_download_clicked", {
+                        locale: resume.locale,
+                        filename: resume.filename,
+                      });
+                      setResumeOpen(false);
+                    }}
                     className="group/resume flex min-h-10 items-center gap-3 rounded-xl px-3 py-2 text-sm text-foreground transition-colors duration-200 hover:bg-muted focus-visible:bg-muted focus-visible:outline-none"
                   >
                     <HugeiconsIcon
@@ -211,7 +218,11 @@ export const Dock = () => {
           <button
             type="button"
             aria-label="Toggle color theme"
-            onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
+            onClick={() => {
+              const next = resolvedTheme === "dark" ? "light" : "dark";
+              posthog.capture("theme_toggled", { theme: next });
+              setTheme(next);
+            }}
             className={cn(buttonClass, "text-faint hover:text-foreground")}
           >
             <span className="relative size-[18px]">

@@ -4,6 +4,7 @@ import { Tick02Icon } from "@hugeicons/core-free-icons";
 import { HugeiconsIcon } from "@hugeicons/react";
 import Image from "next/image";
 import { useCallback, useEffect, useState } from "react";
+import posthog from "posthog-js";
 import { VerifiedBadge } from "@/components/VerifiedBadge";
 import { profile } from "@/data/profile";
 import { cn } from "@/lib/utils";
@@ -15,9 +16,11 @@ export const Intro = () => {
     try {
       await navigator.clipboard.writeText(profile.email);
       setCopied(true);
+      posthog.capture("email_copied", { method: "clipboard" });
     } catch {
       // Clipboard can be blocked (insecure origin, denied permission). Fall
       // back to opening the mail client so the action still does something.
+      posthog.capture("email_copied", { method: "mailto_fallback" });
       window.location.href = `mailto:${profile.email}`;
     }
   }, []);

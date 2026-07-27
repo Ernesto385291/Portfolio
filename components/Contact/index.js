@@ -9,6 +9,7 @@ import {
 } from "@hugeicons/core-free-icons";
 import { HugeiconsIcon } from "@hugeicons/react";
 import { useState } from "react";
+import posthog from "posthog-js";
 import { profile, socials } from "@/data/profile";
 import { cn } from "@/lib/utils";
 
@@ -36,6 +37,11 @@ export const Contact = () => {
       "",
       `— ${form.name || "Anonymous"}${form.email ? ` (${form.email})` : ""}`,
     ].join("\n");
+
+    posthog.capture("contact_message_sent", {
+      has_name: Boolean(form.name),
+      has_message: Boolean(form.message),
+    });
 
     window.location.href = `mailto:${profile.email}?subject=${encodeURIComponent(
       subject,
@@ -123,6 +129,12 @@ export const Contact = () => {
               href={social.href}
               target={social.href.startsWith("mailto:") ? undefined : "_blank"}
               rel="noreferrer"
+              onClick={() =>
+                posthog.capture("social_link_clicked", {
+                  platform: social.icon,
+                  label: social.label,
+                })
+              }
               className="group/row flex items-center gap-3 rounded-xl px-3 py-2.5 transition-colors duration-200 hover:bg-surface focus-visible:bg-surface focus-visible:outline-none"
             >
               <span className="shrink-0 text-muted-foreground transition-colors duration-200 group-hover/row:text-foreground">

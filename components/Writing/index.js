@@ -4,6 +4,7 @@ import { Clock01Icon } from "@hugeicons/core-free-icons";
 import { HugeiconsIcon } from "@hugeicons/react";
 import { m, useReducedMotion } from "framer-motion";
 import Link from "next/link";
+import posthog from "posthog-js";
 import { Section } from "@/components/Section";
 import { readingTime, shortDate, timestamp } from "@/lib/format";
 
@@ -38,6 +39,13 @@ export const Writing = ({
             >
               <Link
                 href={`/article/${post.id}`}
+                onClick={() =>
+                  posthog.capture("article_opened", {
+                    article_id: post.id,
+                    article_title: post.Title,
+                    reading_time_minutes: readingTime(post.Content),
+                  })
+                }
                 className="group/row flex items-center gap-4 rounded-xl px-3 py-2.5 transition-colors duration-200 hover:bg-surface focus-visible:bg-surface focus-visible:outline-none"
               >
                 <time className="meta w-[4.75rem] shrink-0">

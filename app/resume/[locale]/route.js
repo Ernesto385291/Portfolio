@@ -1,4 +1,5 @@
 import { findResume, resumes } from "../../../data/resumes";
+import { getPostHogClient } from "../../../lib/posthog-server";
 
 // Cached at the edge for a day; the upstream file is immutable per upload.
 const CACHE_CONTROL =
@@ -52,6 +53,19 @@ export async function GET(_request, { params }) {
   // real progress bar rather than an indeterminate spinner.
   const length = upstream.headers.get("content-length");
   if (length) headers.set("Content-Length", length);
+
+  const posthog = getPostHogClient();
+  if (posthog) {
+    posthog.capture({
+      distinctId: "anonymous",
+      event: "resume_served",
+      properties: {
+        locale: resume.locale,
+        filename: resume.filename,
+      },
+    });
+    await posthog.flush();
+  }
 
   return new Response(upstream.body, { status: 200, headers });
 }

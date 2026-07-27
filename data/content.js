@@ -1,4 +1,4 @@
-export const posts = [
+const archivedPosts = [
   {
     id: 2,
     Title: "¿Que es Strapi?",
@@ -185,6 +185,10 @@ En la época actual, donde JavaScript es uno de los lenguajes de programación m
 - APIs.`,
   },
 ];
+
+export const posts = archivedPosts.filter(
+  ({ id }) => ![2, 3, 4].includes(id),
+);
 
 export const projects = [
   {
