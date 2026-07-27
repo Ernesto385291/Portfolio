@@ -6,10 +6,9 @@ import Image from "next/image";
 import { useCallback, useEffect, useState } from "react";
 import posthog from "posthog-js";
 import { VerifiedBadge } from "@/components/VerifiedBadge";
-import { profile } from "@/data/profile";
 import { cn } from "@/lib/utils";
 
-export const Intro = () => {
+export const Intro = ({ profile, ui }) => {
   const [copied, setCopied] = useState(false);
 
   const copyEmail = useCallback(async () => {
@@ -23,7 +22,7 @@ export const Intro = () => {
       posthog.capture("email_copied", { method: "mailto_fallback" });
       window.location.href = `mailto:${profile.email}`;
     }
-  }, []);
+  }, [profile.email]);
 
   useEffect(() => {
     if (!copied) return;
@@ -102,11 +101,11 @@ export const Intro = () => {
         className="rise mt-6 flex items-center gap-2 text-base text-muted-foreground"
         style={{ "--rise-delay": 3 }}
       >
-        <span>Press</span>
+        <span>{ui.press}</span>
         <button
           type="button"
           onClick={copyEmail}
-          aria-label={`Copy ${profile.email} to clipboard`}
+          aria-label={ui.copyEmailLabel}
           className={cn(
             "relative grid h-[26px] min-w-[26px] place-items-center rounded-md border border-border bg-surface px-1.5 font-mono text-xs text-foreground shadow-[0_1px_0_0_var(--border)]",
             "transition-[background-color,scale] duration-150 ease-[cubic-bezier(0.2,0,0,1)] hover:bg-muted active:scale-[0.96]",
@@ -114,7 +113,7 @@ export const Intro = () => {
         >
           C
         </button>
-        <span>to copy my email</span>
+        <span>{ui.copyEmail}</span>
         <span
           aria-live="polite"
           className={cn(
@@ -123,7 +122,7 @@ export const Intro = () => {
           )}
         >
           <HugeiconsIcon icon={Tick02Icon} size={15} strokeWidth={2.5} />
-          Copied
+          {ui.copied}
         </span>
       </p>
     </section>

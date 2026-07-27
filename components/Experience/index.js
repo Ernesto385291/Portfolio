@@ -3,21 +3,20 @@
 import { m, useReducedMotion } from "framer-motion";
 import { CompanyChip } from "@/components/CompanyChip";
 import { Section } from "@/components/Section";
-import { experience } from "@/data/profile";
 
-export const Experience = () => {
+export const Experience = ({ data, label, intro, at }) => {
   const reduceMotion = useReducedMotion();
 
-  if (!experience.length) return null;
+  if (!data.length) return null;
 
   return (
     <Section
       id="experience"
-      label="Experience"
-      intro="I take products from first idea to production, combining engineering, product strategy and a close view of how people actually use the software."
+      label={label}
+      intro={intro}
     >
       <ul className="mt-10 flex flex-col gap-8">
-        {experience.map((role, index) => (
+        {data.map((role, index) => (
           <m.li
             key={`${role.company}-${role.from}`}
             initial={{ opacity: 0, y: reduceMotion ? 0 : 16, filter: reduceMotion ? "none" : "blur(4px)" }}
@@ -37,7 +36,7 @@ export const Experience = () => {
 
             <div className="min-w-0">
               <h3 className="flex flex-wrap items-center gap-x-1.5 gap-y-1 text-base font-medium text-foreground">
-                <span>{role.role} at</span>
+                <span>{role.role} {at}</span>
                 {role.url ? (
                   <a
                     href={role.url}

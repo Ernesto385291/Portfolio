@@ -12,9 +12,13 @@ export const Writing = ({
   data,
   id = "writing",
   label = "Writing",
+  locale = "en",
+  emptyLabel = "New posts are coming soon.",
 }) => {
   const reduceMotion = useReducedMotion();
-  const posts = [...data].sort((a, b) => timestamp(b.Creation) - timestamp(a.Creation));
+  const posts = data.toSorted(
+    (a, b) => timestamp(b.Creation) - timestamp(a.Creation),
+  );
 
   return (
     <Section id={id} label={label}>
@@ -44,6 +48,7 @@ export const Writing = ({
                     article_id: post.id,
                     article_title: post.Title,
                     reading_time_minutes: readingTime(post.Content),
+                    locale,
                   })
                 }
                 className="group/row flex items-center gap-4 rounded-xl px-3 py-2.5 transition-colors duration-200 hover:bg-surface focus-visible:bg-surface focus-visible:outline-none"
@@ -64,7 +69,7 @@ export const Writing = ({
         </ul>
       ) : (
         <p className="mt-6 text-base text-muted-foreground">
-          New posts are coming soon.
+          {emptyLabel}
         </p>
       )}
     </Section>

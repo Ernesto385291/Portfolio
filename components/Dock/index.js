@@ -14,19 +14,21 @@ import {
 } from "@hugeicons/core-free-icons";
 import { HugeiconsIcon } from "@hugeicons/react";
 import { AnimatePresence, m, useReducedMotion } from "framer-motion";
+import { usePathname } from "next/navigation";
 import { useTheme } from "next-themes";
 import { useEffect, useRef, useState } from "react";
 import posthog from "posthog-js";
+import { getDictionary } from "@/data/locales";
 import { resumes } from "@/data/resumes";
 import { cn } from "@/lib/utils";
 
 const items = [
-  { id: "about", label: "About", icon: UserIcon },
-  { id: "experience", label: "Experience", icon: Briefcase01Icon },
-  { id: "projects", label: "Projects", icon: CubeIcon },
-  { id: "stack", label: "Stack", icon: Layers01Icon },
-  { id: "writing", label: "Writing", icon: PenTool02Icon },
-  { id: "contact", label: "Contact", icon: Mail01Icon },
+  { id: "about", labelKey: "about", icon: UserIcon },
+  { id: "experience", labelKey: "experience", icon: Briefcase01Icon },
+  { id: "projects", labelKey: "projects", icon: CubeIcon },
+  { id: "stack", labelKey: "stack", icon: Layers01Icon },
+  { id: "writing", labelKey: "writing", icon: PenTool02Icon },
+  { id: "contact", labelKey: "contact", icon: Mail01Icon },
 ];
 
 const buttonClass =
@@ -36,6 +38,9 @@ const iconClass =
   "absolute inset-0 m-auto transition-[opacity,transform,filter] duration-300 ease-[cubic-bezier(0.2,0,0,1)]";
 
 export const Dock = () => {
+  const pathname = usePathname();
+  const locale = pathname === "/es" || pathname.startsWith("/es/") ? "es" : "en";
+  const { ui } = getDictionary(locale);
   const { setTheme, resolvedTheme } = useTheme();
   const [active, setActive] = useState(null);
   const [resumeOpen, setResumeOpen] = useState(false);
@@ -106,7 +111,7 @@ export const Dock = () => {
 
   return (
     <nav
-      aria-label="Sections"
+      aria-label={ui.sections}
       className="fixed bottom-5 left-1/2 z-50 -translate-x-1/2"
     >
       {/* Outer radius 18px = inner radius 14px + 4px padding. */}
@@ -115,7 +120,7 @@ export const Dock = () => {
           <li key={item.id}>
             <a
               href={`#${item.id}`}
-              aria-label={item.label}
+              aria-label={ui[item.labelKey]}
               aria-current={active === item.id ? "true" : undefined}
               className={cn(
                 buttonClass,
@@ -152,7 +157,7 @@ export const Dock = () => {
                 transition={{ type: "spring", duration: 0.3, bounce: 0 }}
                 className="absolute right-0 bottom-[calc(100%+0.75rem)] w-56 origin-bottom-right rounded-2xl border border-border bg-background/95 p-1.5 shadow-card backdrop-blur-xl"
               >
-                <p className="label px-3 pt-2 pb-1.5">Download résumé</p>
+                <p className="label px-3 pt-2 pb-1.5">{ui.downloadResume}</p>
                 {resumes.map((resume, index) => (
                   <m.a
                     key={resume.locale}
@@ -196,7 +201,7 @@ export const Dock = () => {
 
           <button
             type="button"
-            aria-label="Download résumé"
+            aria-label={ui.downloadResume}
             aria-expanded={resumeOpen}
             aria-controls="resume-download-menu"
             onClick={() => setResumeOpen((open) => !open)}
@@ -217,7 +222,7 @@ export const Dock = () => {
         <li>
           <button
             type="button"
-            aria-label="Toggle color theme"
+            aria-label={ui.toggleTheme}
             onClick={() => {
               const next = resolvedTheme === "dark" ? "light" : "dark";
               posthog.capture("theme_toggled", { theme: next });

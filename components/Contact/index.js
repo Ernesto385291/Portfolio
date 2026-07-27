@@ -10,7 +10,7 @@ import {
 import { HugeiconsIcon } from "@hugeicons/react";
 import { useState } from "react";
 import posthog from "posthog-js";
-import { profile, socials } from "@/data/profile";
+import { socials } from "@/data/profile";
 import { cn } from "@/lib/utils";
 
 const ICONS = {
@@ -23,19 +23,19 @@ const ICONS = {
 const fieldClass =
   "w-full rounded-xl bg-input px-4 py-3 text-base text-foreground placeholder:text-faint transition-[background-color,box-shadow] duration-200 focus:bg-muted focus:outline-none focus-visible:ring-[3px] focus-visible:ring-ring/25";
 
-export const Contact = () => {
+export const Contact = ({ profile, ui }) => {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
 
   // No backend: compose the message and hand it to the user's mail client.
   // Nothing is faked — if their client does not open, nothing was "sent".
   const send = () => {
     const subject = form.name
-      ? `Portfolio message from ${form.name}`
-      : "Portfolio message";
+      ? `${ui.mailSubject} — ${form.name}`
+      : ui.mailSubject;
     const body = [
       form.message,
       "",
-      `— ${form.name || "Anonymous"}${form.email ? ` (${form.email})` : ""}`,
+      `— ${form.name || ui.anonymous}${form.email ? ` (${form.email})` : ""}`,
     ].join("\n");
 
     posthog.capture("contact_message_sent", {
@@ -61,9 +61,9 @@ export const Contact = () => {
 
   return (
     <section id="contact" className="column scroll-mt-12">
-      <p className="label reveal">Contact</p>
+      <p className="label reveal">{ui.contact}</p>
       <p className="reveal mt-5 text-base leading-[1.7] text-muted-foreground">
-        You can contact me using the form or via the links below.
+        {ui.contactIntro}
       </p>
 
       <form
@@ -80,8 +80,8 @@ export const Contact = () => {
             type="text"
             name="name"
             autoComplete="off"
-            aria-label="Name"
-            placeholder="Name"
+            aria-label={ui.name}
+            placeholder={ui.name}
             value={form.name}
             onChange={update("name")}
             suppressHydrationWarning
@@ -91,8 +91,8 @@ export const Contact = () => {
             type="email"
             name="email"
             autoComplete="off"
-            aria-label="Email"
-            placeholder="Email"
+            aria-label={ui.email}
+            placeholder={ui.email}
             value={form.email}
             onChange={update("email")}
             suppressHydrationWarning
@@ -102,8 +102,8 @@ export const Contact = () => {
           className={cn(fieldClass, "min-h-40 resize-y")}
           name="message"
           autoComplete="off"
-          aria-label="Message"
-          placeholder="Message"
+          aria-label={ui.message}
+          placeholder={ui.message}
           value={form.message}
           onChange={update("message")}
           suppressHydrationWarning
@@ -113,11 +113,10 @@ export const Contact = () => {
             type="submit"
             className="rounded-xl bg-muted px-4 py-2.5 text-base font-medium text-foreground transition-[background-color,scale] duration-200 ease-[cubic-bezier(0.2,0,0,1)] hover:bg-accent active:scale-[0.96] focus-visible:ring-[3px] focus-visible:ring-ring/25 focus-visible:outline-none"
           >
-            Send message
+            {ui.sendMessage}
           </button>
           <p className="meta">
-            or <kbd className="font-mono">⌘</kbd>
-            <kbd className="font-mono">↵</kbd> to send
+            {ui.orShortcut}
           </p>
         </div>
       </form>

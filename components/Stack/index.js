@@ -5,15 +5,17 @@ import { stack } from "@/data/profile";
 const toIconKey = (slug) =>
   `si${slug.charAt(0).toUpperCase()}${slug.slice(1)}`;
 
-export const Stack = () => {
+export const Stack = ({ label = "Stack" }) => {
   const marks = stack
-    .map((slug) => icons[toIconKey(slug)])
-    .filter(Boolean);
+    .flatMap((slug) => {
+      const icon = icons[toIconKey(slug)];
+      return icon ? [icon] : [];
+    });
 
   if (!marks.length) return null;
 
   return (
-    <Section id="stack" label="Stack">
+    <Section id="stack" label={label}>
       <ul className="reveal mt-7 flex flex-wrap items-center gap-x-6 gap-y-5">
         {marks.map((mark) => (
           <li key={mark.slug}>

@@ -29,14 +29,14 @@ const ProjectMark = ({ project }) => (
   </span>
 );
 
-export const Projects = ({ data }) => {
+export const Projects = ({ data, label = "Selected work", intro }) => {
   const reduceMotion = useReducedMotion();
 
   return (
     <Section
       id="projects"
-      label="Selected work"
-      intro="A few products and research projects that best represent how I work today."
+      label={label}
+      intro={intro}
     >
       <ul className="-mx-3 mt-8">
         {data.map((project, index) => (
