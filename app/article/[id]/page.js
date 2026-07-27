@@ -10,6 +10,7 @@ import Markdown from "markdown-to-jsx";
 import { Writing } from "../../../components/Writing";
 import { longDate, readingTime, wordCount } from "../../../lib/format";
 import { getArticle, getPosts } from "../../../lib/content";
+import { jsonLd, siteConfig } from "../../../lib/seo";
 
 export const revalidate = 3600;
 export const dynamicParams = true;
@@ -24,18 +25,29 @@ export async function generateMetadata({ params }) {
   const article = await getArticle(id);
 
   if (!article) {
-    return { title: "Article not found" };
+    return { title: "Article not found", robots: { index: false, follow: false } };
   }
+
+  const path = `/article/${id}`;
 
   return {
     title: article.Title,
     description: article.Description,
+    alternates: { canonical: path },
     openGraph: {
       type: "article",
-      url: `/article/${id}`,
+      url: path,
+      title: article.Title,
+      description: article.Description,
+      authors: [siteConfig.name],
+      publishedTime: article.publishedAt,
+      images: article.Cover ? [{ url: article.Cover, alt: article.Title }] : undefined,
     },
     twitter: {
-      card: "summary",
+      card: "summary_large_image",
+      title: article.Title,
+      description: article.Description,
+      images: article.Cover ? [article.Cover] : undefined,
     },
   };
 }
@@ -50,9 +62,32 @@ export default async function ArticlePage({ params }) {
 
   const posts = await getPosts();
   const otherPosts = posts.filter((post) => String(post.id) !== String(id));
+  const articleUrl = `${siteConfig.url}/article/${id}`;
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: article.Title,
+    description: article.Description,
+    url: articleUrl,
+    mainEntityOfPage: articleUrl,
+    image: article.Cover,
+    datePublished: article.publishedAt,
+    dateModified: article.updatedAt ?? article.publishedAt,
+    inLanguage: "es-MX",
+    author: {
+      "@type": "Person",
+      "@id": `${siteConfig.url}/#person`,
+      name: siteConfig.name,
+      url: siteConfig.url,
+    },
+  };
 
   return (
     <article className="pb-32">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: jsonLd(structuredData) }}
+      />
       <div className="column pt-8 pb-12 md:pt-10">
         <Link
           href="/#writing"

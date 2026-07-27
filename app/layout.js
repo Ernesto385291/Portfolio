@@ -1,14 +1,12 @@
 import { Figtree, JetBrains_Mono } from "next/font/google";
-import Script from "next/script";
 import { Analytics } from "@vercel/analytics/next";
 import { Dock } from "../components/Dock";
 import { Footer } from "../components/Footer";
 import { MotionProvider } from "../components/MotionProvider";
 import { SkipLink } from "../components/SkipLink";
 import { ThemeProvider } from "../components/ThemeProvider";
+import { absoluteUrl, siteConfig } from "../lib/seo";
 import "../styles/globals.css";
-
-const siteUrl = "https://ernestovizcaino.vercel.app";
 
 const figtree = Figtree({
   subsets: ["latin"],
@@ -23,13 +21,22 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata = {
-  metadataBase: new URL(siteUrl),
+  metadataBase: new URL(siteConfig.url),
+  applicationName: siteConfig.name,
   title: {
-    default: "Ernesto Vizcaíno",
-    template: "Ernesto Vizcaíno | %s",
+    default: siteConfig.title,
+    template: `%s | ${siteConfig.name}`,
   },
-  description:
-    "Full-stack AI and product engineer building fintech, SaaS, mobile, and applied machine-learning products.",
+  description: siteConfig.description,
+  keywords: [
+    "Ernesto Vizcaíno",
+    "full-stack engineer",
+    "AI engineer",
+    "product engineer",
+    "fintech developer",
+    "SaaS developer",
+    "machine learning engineer",
+  ],
   alternates: {
     canonical: "/",
     languages: {
@@ -38,19 +45,47 @@ export const metadata = {
       "x-default": "/",
     },
   },
-  authors: [{ name: "Ernesto Vizcaíno" }],
-  robots: { index: true, follow: true },
+  authors: [{ name: siteConfig.name, url: siteConfig.url }],
+  creator: siteConfig.name,
+  publisher: siteConfig.name,
+  category: "technology",
+  referrer: "origin-when-cross-origin",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
   openGraph: {
     type: "website",
-    siteName: "Ernesto Vizcaíno",
-    images: ["https://i.imgur.com/Hi2WGWX.png"],
+    url: "/",
+    title: siteConfig.title,
+    description: siteConfig.description,
+    siteName: siteConfig.name,
+    locale: siteConfig.locale,
+    images: [
+      {
+        url: absoluteUrl("/opengraph-image"),
+        width: 1200,
+        height: 630,
+        alt: `${siteConfig.name}, Full-Stack AI and Product Engineer`,
+      },
+    ],
   },
   twitter: {
-    card: "summary",
-    creator: "@erne_vizcaino",
-    images: ["https://i.imgur.com/Hi2WGWX.png"],
+    card: "summary_large_image",
+    creator: siteConfig.twitter,
+    title: siteConfig.title,
+    description: siteConfig.description,
+    images: [absoluteUrl("/opengraph-image")],
   },
   icons: { icon: "/favicon.ico" },
+  manifest: "/manifest.webmanifest",
 };
 
 export const viewport = {
@@ -76,27 +111,6 @@ export default function RootLayout({ children }) {
             <Dock />
           </MotionProvider>
         </ThemeProvider>
-        <Script id="matomo" strategy="afterInteractive">
-          {`
-            var _paq = window._paq = window._paq || [];
-            _paq.push(["setDocumentTitle", document.domain + "/" + document.title]);
-            _paq.push(["setCookieDomain", "*.ernestovizcaino.vercel.app"]);
-            _paq.push(["setDomains", ["*.ernestovizcaino.vercel.app"]]);
-            _paq.push(["trackPageView"]);
-            _paq.push(["enableLinkTracking"]);
-            (function() {
-              var u = "https://analytics.traverapp.com/";
-              _paq.push(["setTrackerUrl", u + "matomo.php"]);
-              _paq.push(["setSiteId", "4"]);
-              var d = document;
-              var g = d.createElement("script");
-              var s = d.getElementsByTagName("script")[0];
-              g.async = true;
-              g.src = u + "matomo.js";
-              s.parentNode.insertBefore(g, s);
-            })();
-          `}
-        </Script>
         <Analytics />
       </body>
     </html>
