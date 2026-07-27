@@ -10,15 +10,17 @@ import { Section } from "@/components/Section";
 const ProjectMark = ({ project }) => (
   <span
     aria-hidden="true"
-    className={`grid size-10 shrink-0 place-items-center overflow-hidden rounded-[10px] ${project.Accent}`}
+    className="grid size-10 shrink-0 place-items-center"
   >
     {project.Image ? (
       <Image
         src={project.Image}
         alt=""
-        width={28}
-        height={28}
-        className="image-outline size-7 rounded-lg object-contain"
+        width={80}
+        height={80}
+        quality={100}
+        sizes="40px"
+        className="size-10 object-contain"
       />
     ) : (
       <span className="font-mono text-sm text-foreground/70">

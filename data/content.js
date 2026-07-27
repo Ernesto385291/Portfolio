@@ -198,7 +198,6 @@ export const projects = [
       "Offline-first point of sale, inventory and customer-credit platform for small businesses on mobile and web.",
     Project_URL: "https://www.getkashi.com/",
     Image: "/brands/kashi.png",
-    Accent: "bg-[#e8f2ff] dark:bg-[#17243a]",
     Meta: "Founder · 2026—Now",
   },
   {
@@ -208,7 +207,6 @@ export const projects = [
       "Exam-prep SaaS with interactive simulations, study modules, payments, analytics and an organic SEO growth engine.",
     Project_URL: "https://www.pasaegel.com/",
     Image: "/brands/pasaegel.png",
-    Accent: "bg-[#f2ecff] dark:bg-[#29203b]",
     Meta: "Founder · 2026—Now",
   },
   {
@@ -218,7 +216,6 @@ export const projects = [
       "AI workflows for financial services, spanning loan origination, risk review, compliance and document analysis.",
     Project_URL: "https://www.tryoliver.ai/en",
     Image: "/brands/oliver.ico",
-    Accent: "bg-[#e9f7ef] dark:bg-[#183027]",
     Meta: "Technical Co-Founder · 2024—2025",
   },
   {
@@ -226,7 +223,6 @@ export const projects = [
     Project_Title: "Gaia–OGLE Star Classifier",
     Description:
       "XGBoost classifier trained on 137,258 variable stars across 11 classes, reaching 0.9847 weighted F1 against OGLE labels.",
-    Accent: "bg-[#fff2dc] dark:bg-[#382b18]",
     Monogram: "✦",
     Meta: "ML research · 2026",
   },
