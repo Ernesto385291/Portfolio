@@ -4,6 +4,7 @@ import { Dock } from "../components/Dock";
 import { Footer } from "../components/Footer";
 import { MotionProvider } from "../components/MotionProvider";
 import { SkipLink } from "../components/SkipLink";
+import { SoundProvider } from "../components/SoundProvider";
 import { ThemeProvider } from "../components/ThemeProvider";
 import { absoluteUrl, siteConfig } from "../lib/seo";
 import type { Metadata, Viewport } from "next";
@@ -106,12 +107,14 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
     >
       <body>
         <ThemeProvider>
-          <MotionProvider>
-            <SkipLink />
-            <main id="main">{children}</main>
-            <Footer />
-            <Dock />
-          </MotionProvider>
+          <SoundProvider>
+            <MotionProvider>
+              <SkipLink />
+              <main id="main">{children}</main>
+              <Footer />
+              <Dock />
+            </MotionProvider>
+          </SoundProvider>
         </ThemeProvider>
         <Analytics />
       </body>

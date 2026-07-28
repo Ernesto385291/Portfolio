@@ -116,6 +116,8 @@ export const Contact = ({ profile, ui }: { profile: Profile; ui: DictionaryUi })
         <div className="mt-1 flex items-center justify-between gap-4">
           <button
             type="submit"
+            data-cuelume-press
+            data-cuelume-release
             className="rounded-xl bg-muted px-4 py-2.5 text-base font-medium text-foreground transition-[background-color,scale] duration-200 ease-[cubic-bezier(0.2,0,0,1)] hover:bg-accent active:scale-[0.96] focus-visible:ring-[3px] focus-visible:ring-ring/25 focus-visible:outline-none"
           >
             {ui.sendMessage}
@@ -133,6 +135,7 @@ export const Contact = ({ profile, ui }: { profile: Profile; ui: DictionaryUi })
               href={social.href}
               target={social.href.startsWith("mailto:") ? undefined : "_blank"}
               rel="noreferrer"
+              data-cuelume-hover="tick"
               onClick={() =>
                 posthog.capture("social_link_clicked", {
                   platform: social.icon,

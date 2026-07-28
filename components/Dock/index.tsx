@@ -121,6 +121,7 @@ export const Dock = () => {
           <li key={item.id}>
             <a
               href={`#${item.id}`}
+              data-cuelume-hover="tick"
               aria-label={ui[item.labelKey]}
               aria-current={active === item.id ? "true" : undefined}
               className={cn(
@@ -163,6 +164,7 @@ export const Dock = () => {
                   <m.a
                     key={resume.locale}
                     href={`/resume/${resume.locale}`}
+                    data-cuelume-hover="tick"
                     download={resume.filename}
                     initial={{ opacity: 0, x: reduceMotion ? 0 : -5 }}
                     animate={{ opacity: 1, x: 0 }}
@@ -202,6 +204,7 @@ export const Dock = () => {
 
           <button
             type="button"
+            data-cuelume-toggle
             aria-label={ui.downloadResume}
             aria-expanded={resumeOpen}
             aria-controls="resume-download-menu"
@@ -223,6 +226,7 @@ export const Dock = () => {
         <li>
           <button
             type="button"
+            data-cuelume-toggle
             aria-label={ui.toggleTheme}
             onClick={() => {
               const next = resolvedTheme === "dark" ? "light" : "dark";
@@ -250,6 +254,7 @@ export const Dock = () => {
             </span>
           </button>
         </li>
+
       </ul>
     </nav>
   );

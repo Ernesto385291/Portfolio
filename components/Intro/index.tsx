@@ -6,6 +6,7 @@ import Image from "next/image";
 import { useCallback, useEffect, useState } from "react";
 import type { CSSProperties } from "react";
 import posthog from "posthog-js";
+import { play } from "cuelume";
 import { VerifiedBadge } from "@/components/VerifiedBadge";
 import { cn } from "@/lib/utils";
 import type { DictionaryUi } from "@/data/locales";
@@ -20,11 +21,13 @@ export const Intro = ({ profile, ui }: { profile: Profile; ui: DictionaryUi }) =
     try {
       await navigator.clipboard.writeText(profile.email);
       setCopied(true);
+      play("success");
       posthog.capture("email_copied", { method: "clipboard" });
     } catch {
       // Clipboard can be blocked (insecure origin, denied permission). Fall
       // back to opening the mail client so the action still does something.
       posthog.capture("email_copied", { method: "mailto_fallback" });
+      play("error");
       window.location.href = `mailto:${profile.email}`;
     }
   }, [profile.email]);
@@ -109,6 +112,8 @@ export const Intro = ({ profile, ui }: { profile: Profile; ui: DictionaryUi }) =
         <span>{ui.press}</span>
         <button
           type="button"
+          data-cuelume-press
+          data-cuelume-release
           onClick={copyEmail}
           aria-label={ui.copyEmailLabel}
           className={cn(
