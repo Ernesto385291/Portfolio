@@ -47,7 +47,7 @@ export const TopBar = ({ locale = "en" }: { locale?: Locale }) => {
 
   return (
     <div className="column flex items-center justify-between pt-8 pb-12 md:pt-10">
-      <span className="meta">EST. {profile.establishedYear}</span>
+      <span className="meta">{dictionary.ui.established}</span>
       <span className="flex items-center gap-3">
         <button
           type="button"

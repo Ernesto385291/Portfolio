@@ -1,8 +1,8 @@
 export const siteConfig = {
   name: "Ernesto Vizcaíno",
-  title: "Ernesto Vizcaíno — Full-Stack AI & Product Engineer",
+  title: "Ernesto Vizcaíno — Product Engineer — AI, Fintech & SaaS",
   description:
-    "Full-stack AI and product engineer building fintech, SaaS, mobile, and applied machine-learning products from idea to production.",
+    "Product engineer building and launching AI, fintech, SaaS and mobile products from zero to production.",
   url: "https://ernestovizcaino.com",
   locale: "en_US",
   twitter: "@erne_vizcaino",

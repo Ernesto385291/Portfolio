@@ -76,7 +76,7 @@ export const metadata: Metadata = {
         url: absoluteUrl("/opengraph-image"),
         width: 1200,
         height: 630,
-        alt: `${siteConfig.name}, Full-Stack AI and Product Engineer`,
+        alt: `${siteConfig.name}, Product Engineer — AI, Fintech & SaaS`,
       },
     ],
   },

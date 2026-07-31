@@ -216,7 +216,7 @@ export const projects: Project[] = [
     id: "kashi",
     Project_Title: "Kashi",
     Description:
-      "Offline-first point of sale, inventory and customer-credit platform for small businesses on mobile and web.",
+      "Offline-first POS for small businesses, combining sales, inventory, customer credit and reporting across mobile and web.",
     Project_URL: "https://www.getkashi.com/",
     Image: "/brands/kashi.png",
     Meta: "Founder · 2026—Now",
@@ -225,7 +225,7 @@ export const projects: Project[] = [
     id: "pasaegel",
     Project_Title: "PasaEGEL",
     Description:
-      "Exam-prep SaaS with interactive simulations, study modules, payments, analytics and an organic SEO growth engine.",
+      "EGEL preparation platform with interactive simulations, study modules, payments, analytics and an organic SEO acquisition engine.",
     Project_URL: "https://www.pasaegel.com/",
     Image: "/brands/pasaegel.png",
     Meta: "Founder · 2026—Now",
@@ -234,7 +234,7 @@ export const projects: Project[] = [
     id: "oliver-ai",
     Project_Title: "Oliver AI",
     Description:
-      "AI workflows for financial services, spanning loan origination, risk review, compliance and document analysis.",
+      "Production AI workflows for financial services, covering loan origination, risk review, compliance and document analysis.",
     Project_URL: "https://www.tryoliver.ai/en",
     Image: "/brands/oliver.ico",
     Meta: "Technical Co-Founder · 2024—2025",
@@ -243,7 +243,7 @@ export const projects: Project[] = [
     id: "gaia-ogle",
     Project_Title: "Gaia–OGLE Star Classifier",
     Description:
-      "XGBoost classifier trained on 137,258 variable stars across 11 classes, reaching 0.9847 weighted F1 against OGLE labels.",
+      "Machine-learning classifier trained on 137,258 variable stars across 11 classes, achieving a 0.9847 weighted F1 score against OGLE labels.",
     Monogram: "✦",
     Meta: "ML research · 2026",
   },

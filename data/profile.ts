@@ -6,7 +6,7 @@
 
 export const profile = {
   name: "Ernesto Vizcaíno",
-  role: "Full-Stack AI / Product Engineer",
+  role: "Product Engineer — AI, Fintech & SaaS",
   avatar: "/profile.jpg",
   email: "vizcaino.erne@gmail.com",
   verified: true,
@@ -21,10 +21,10 @@ export const profile = {
   timeZoneLabel: "CST",
 
   bio: [
-    { text: "I build " },
-    { text: "AI products and full-stack software", strong: true },
+    { text: "I build and launch " },
+    { text: "full-stack products from zero to production", strong: true },
     {
-      text: " from first idea to production. My work spans fintech, SaaS, mobile apps and applied machine learning, with a focus on useful products and measurable outcomes.",
+      text: ". I’ve founded SaaS products, built fintech and AI systems, and shipped mobile software used by thousands of people.",
     },
   ],
 };
@@ -60,7 +60,7 @@ export const experience = [
     url: "https://www.getkashi.com/",
     logo: "/brands/kashi.png",
     summary:
-      "Designed and built an offline-first mobile and web POS for small businesses, owning product strategy, architecture, inventory, sales, customer credit and cross-platform subscriptions.",
+      "Designed and built an offline-first POS for small businesses across mobile and web, including inventory, sales, customer credit, reporting and cross-platform subscriptions.",
   },
   {
     from: "Apr 2026",
@@ -70,7 +70,7 @@ export const experience = [
     url: "https://www.pasaegel.com/",
     logo: "/brands/pasaegel.png",
     summary:
-      "Built a revenue-generating exam-prep SaaS from scratch. Reached 300+ users, more than 5,000 monthly visitors, more than 130 paid orders and top-five Google rankings without paid ads.",
+      "Founded and built an EGEL preparation platform end to end, including interactive simulations, payments, analytics and SEO. Reached 300+ users, 5,000+ monthly visitors, 130+ paid orders and top-five Google rankings, driven primarily by organic search.",
   },
   {
     from: "Oct 2025",
@@ -80,7 +80,7 @@ export const experience = [
     url: "https://financiamientointeligente.com/",
     logo: "/brands/financiamiento-inteligente.svg",
     summary:
-      "Built a credit pre-approval model that helped SMBs access more than $4M MXN in its first month, plus AI agents and React/Python financial dashboards.",
+      "Built a credit pre-approval system that supported more than $4M MXN in SMB financing during its first month, alongside AI agents and financial dashboards built with React and Python.",
   },
   {
     from: "Jan 2024",
@@ -90,7 +90,7 @@ export const experience = [
     url: "https://www.tryoliver.ai/en",
     logo: "/brands/oliver.ico",
     summary:
-      "Led a full-stack fintech platform and production AI workflows for loan origination, risk, compliance and document analysis, backed by AWS and product analytics.",
+      "Led engineering across a fintech platform and production AI workflows for loan origination, risk analysis, compliance and document processing.",
   },
   {
     from: "Aug 2021",
@@ -99,7 +99,7 @@ export const experience = [
     company: "Oliver POS / ERP",
     logo: "/brands/oliver.ico",
     summary:
-      "Shipped a POS mobile app to 10,000+ downloads and 3,000 active users in three months, then expanded it into a full web ERP.",
+      "Built and launched a React Native POS app that reached 10,000+ downloads and 3,000 active users within three months, then expanded it into a complete web ERP.",
   },
 ];
 

@@ -11,23 +11,25 @@ const english = {
   experience,
   metadata: {
     description:
-      "Full-stack AI and product engineer building fintech, SaaS, mobile, and applied machine-learning products.",
+      "Product engineer building and launching AI, fintech, SaaS and mobile products from zero to production.",
   },
   ui: {
     skip: "Skip to content",
+    established: "BUILDING SINCE 2016",
     about: "About",
     experience: "Experience",
     experienceIntro:
-      "I take products from first idea to production, combining engineering, product strategy and a close view of how people actually use the software.",
+      "I take products from initial concept to real users, combining engineering, product decisions and a close understanding of how the software performs in practice.",
     at: "at",
     projects: "Projects",
     selectedWork: "Selected work",
     projectsIntro:
-      "A few products and research projects that best represent how I work today.",
+      "A selection of products and research that represent my approach to engineering, product development and problem-solving.",
     stack: "Stack",
     writing: "Writing",
     contact: "Contact",
-    contactIntro: "You can contact me using the form or via the links below.",
+    contactIntro:
+      "I’m open to product engineering opportunities, ambitious startup teams and selected collaborations.",
     name: "Name",
     email: "Email",
     message: "Message",
@@ -57,7 +59,7 @@ const spanishExperience = [
     to: "Actualidad",
     role: "Fundador / Ingeniero de Producto",
     summary:
-      "Diseñé y construí un punto de venta móvil y web para pequeños negocios, liderando la estrategia de producto, arquitectura, inventario, ventas, crédito a clientes y suscripciones multiplataforma.",
+      "Diseñé y construí un punto de venta offline-first para pequeños negocios en móvil y web, con inventario, ventas, crédito a clientes, reportes y suscripciones multiplataforma.",
   },
   {
     ...experience[1],
@@ -65,7 +67,7 @@ const spanishExperience = [
     to: "Actualidad",
     role: "Fundador / Ingeniero de Producto",
     summary:
-      "Construí desde cero un SaaS rentable de preparación para el EGEL. En sus primeros meses, alcancé más de 300 usuarios, más de 5,000 visitantes mensuales, más de 130 órdenes pagadas y posiciones entre los cinco primeros resultados de Google sin anuncios.",
+      "Fundé y construí de principio a fin una plataforma de preparación para el EGEL, con simuladores interactivos, pagos, analítica y SEO. Alcanzó más de 300 usuarios, 5,000 visitantes mensuales, 130 órdenes pagadas y posiciones entre los primeros cinco resultados de Google, principalmente mediante búsqueda orgánica.",
   },
   {
     ...experience[2],
@@ -73,7 +75,7 @@ const spanishExperience = [
     to: "Ene 2026",
     role: "Ingeniero de IA / Equipo Fundador",
     summary:
-      "Construí un modelo de preaprobación crediticia que ayudó a PyMEs a acceder a más de $4 M MXN durante su primer mes, además de agentes de IA y tableros financieros en React y Python.",
+      "Construí un sistema de preaprobación crediticia que respaldó más de $4 M MXN en financiamiento para PyMEs durante su primer mes, además de agentes de IA y tableros financieros desarrollados con React y Python.",
   },
   {
     ...experience[3],
@@ -81,7 +83,7 @@ const spanishExperience = [
     to: "Jul 2025",
     role: "Cofundador Técnico",
     summary:
-      "Lideré una plataforma fintech full-stack y flujos de IA en producción para originación de crédito, riesgo, cumplimiento y análisis documental, respaldados por AWS y analítica de producto.",
+      "Lideré la ingeniería de una plataforma fintech y flujos de IA en producción para originación de crédito, análisis de riesgo, cumplimiento y procesamiento documental.",
   },
   {
     ...experience[4],
@@ -89,7 +91,7 @@ const spanishExperience = [
     to: "Dic 2023",
     role: "Fundador / Ingeniero",
     summary:
-      "Lancé una aplicación móvil de punto de venta que alcanzó más de 10,000 descargas y 3,000 usuarios activos en tres meses, y después la amplié hasta convertirla en un ERP web completo.",
+      "Construí y lancé una aplicación de punto de venta en React Native que alcanzó más de 10,000 descargas y 3,000 usuarios activos en tres meses, y posteriormente la expandí hasta convertirla en un ERP web completo.",
   },
 ];
 
@@ -99,37 +101,41 @@ const spanish = {
   htmlLang: "es",
   profile: {
     ...profile,
-    role: "Ingeniero Full-Stack de IA y Producto",
+    role: "Ingeniero de Producto — IA, Fintech y SaaS",
     bio: [
-      { text: "Construyo " },
-      { text: "productos de IA y software full-stack", strong: true },
+      { text: "Construyo y lanzo " },
       {
-        text: " desde la primera idea hasta producción. Mi trabajo abarca fintech, SaaS, aplicaciones móviles y aprendizaje automático aplicado, con un enfoque en productos útiles y resultados medibles.",
+        text: "productos full-stack desde cero hasta producción",
+        strong: true,
+      },
+      {
+        text: ". He fundado productos SaaS, desarrollado sistemas de fintech e IA y lanzado software móvil utilizado por miles de personas.",
       },
     ],
   },
   experience: spanishExperience,
   metadata: {
     description:
-      "Ingeniero full-stack de IA y producto especializado en fintech, SaaS, aplicaciones móviles y aprendizaje automático aplicado.",
+      "Ingeniero de producto que construye y lanza productos de IA, fintech, SaaS y aplicaciones móviles desde cero hasta producción.",
   },
   ui: {
     ...english.ui,
     skip: "Saltar al contenido",
+    established: "CONSTRUYENDO DESDE 2016",
     about: "Acerca de mí",
     experience: "Experiencia",
     experienceIntro:
-      "Llevo productos desde la primera idea hasta producción, combinando ingeniería, estrategia de producto y una visión cercana de cómo las personas usan el software.",
+      "Llevo productos desde el concepto inicial hasta usuarios reales, combinando ingeniería, decisiones de producto y una comprensión cercana de cómo funciona el software en la práctica.",
     at: "en",
     projects: "Proyectos",
     selectedWork: "Trabajo destacado",
     projectsIntro:
-      "Algunos productos y proyectos de investigación que mejor representan cómo trabajo actualmente.",
+      "Una selección de productos y proyectos de investigación que representan mi forma de abordar la ingeniería, el desarrollo de producto y la resolución de problemas.",
     stack: "Tecnologías",
     writing: "Artículos",
     contact: "Contacto",
     contactIntro:
-      "Puedes contactarme mediante el formulario o a través de los enlaces de abajo.",
+      "Estoy abierto a oportunidades de ingeniería de producto, equipos de startups ambiciosos y colaboraciones seleccionadas.",
     name: "Nombre",
     email: "Correo",
     message: "Mensaje",
@@ -165,15 +171,15 @@ export function localizeProjects(projects: Project[], locale: Locale = "en") {
 
   const descriptions: Partial<Record<Project["id"], string>> = {
     kashi:
-      "Punto de venta, inventario y crédito a clientes para pequeños negocios en móvil y web.",
+      "Punto de venta offline-first para pequeños negocios, con ventas, inventario, crédito a clientes y reportes en móvil y web.",
     pasaegel:
-      "SaaS de preparación para el EGEL con simuladores interactivos, módulos de estudio, pagos, analítica y crecimiento orgánico mediante SEO.",
+      "Plataforma de preparación para el EGEL con simuladores interactivos, módulos de estudio, pagos, analítica y adquisición orgánica mediante SEO.",
     "financiamiento-inteligente":
       "Plataforma de financiamiento para PyMEs con preaprobación crediticia impulsada por IA y tableros financieros.",
     "oliver-ai":
-      "Plataforma fintech y flujos de IA para originación de crédito, riesgo, cumplimiento y análisis documental.",
+      "Flujos de IA en producción para servicios financieros, incluyendo originación de crédito, revisión de riesgo, cumplimiento y análisis documental.",
     "gaia-ogle":
-      "Proyecto de aprendizaje automático para clasificar estrellas variables a partir de datos astronómicos de Gaia y OGLE.",
+      "Clasificador de aprendizaje automático entrenado con 137,258 estrellas variables de 11 clases, con un F1 ponderado de 0.9847 frente a las etiquetas de OGLE.",
   };
 
   return projects.map((project) => ({

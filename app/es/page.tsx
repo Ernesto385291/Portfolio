@@ -8,7 +8,7 @@ export const revalidate = 3600;
 const dictionary = getDictionary("es");
 
 export const metadata = {
-  title: "Ingeniero Full-Stack de IA y Producto",
+  title: "Ingeniero de Producto — IA, Fintech y SaaS",
   description: dictionary.metadata.description,
   alternates: {
     canonical: "/es",
@@ -19,13 +19,13 @@ export const metadata = {
     },
   },
   openGraph: {
-    title: "Ernesto Vizcaíno — Ingeniero Full-Stack de IA y Producto",
+    title: "Ernesto Vizcaíno — Ingeniero de Producto — IA, Fintech y SaaS",
     description: dictionary.metadata.description,
     locale: "es_MX",
     url: "/es",
   },
   twitter: {
-    title: "Ernesto Vizcaíno — Ingeniero Full-Stack de IA y Producto",
+    title: "Ernesto Vizcaíno — Ingeniero de Producto — IA, Fintech y SaaS",
     description: dictionary.metadata.description,
   },
 };
